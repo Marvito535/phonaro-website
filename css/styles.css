@@ -1,0 +1,688 @@
+/* Allgemeine Styles */
+body {
+    font-family: Arial, sans-serif; /* Setzt die Schriftart auf Arial oder sans-serif als Fallback */
+    height:100%;
+    margin: 0; /* Entfernt standardmäßige Ränder des Browsers */
+    padding: 0; /* Entfernt standardmäßige Auffüllung des Browsers */
+    background-color: #FFFFFF ; /* Setzt den Hintergrund des gesamten Dokuments auf eine blaue Farbe */
+    display: flex;
+    flex-direction: column; /* Stellt sicher, dass der Footer am unteren Ende ist */
+}
+
+/* Header */
+header {
+    position: relative; /* Ermöglicht es, dass das Logo relativ zum Header positioniert wird */
+    display: flex; /* Verwendet Flexbox, um die Elemente im Header zu organisieren */
+    justify-content: center; /* Zentriert den Text horizontal im Header */
+    align-items: center; /* Zentriert den Text vertikal im Header */
+    color: #005e3f; /* Setzt die Textfarbe */
+    text-align: center; /* Zentriert den Text innerhalb des Containers */
+    padding: 10px 20px; /* Fügt dem Header etwas Innenabstand hinzu */
+    
+    /* ÄNDERUNG: min-height statt height, damit der Header auf 0 kollabieren kann */
+    min-height: 100px; 
+    max-height: 200px;
+    overflow: hidden;
+    z-index: 1000; /* Damit der Header über dem Content bleibt */
+    opacity: 1;
+
+    /* KORREKTUR: Alle Animationen in einer einzigen Zeile zusammengefasst */
+    transition: max-height 0.6s ease-in-out, 
+                min-height 0.6s ease-in-out, 
+                padding 0.6s ease-in-out, 
+                opacity 0.4s ease-in-out;
+}
+
+/* Diese Klasse wird per JavaScript hinzugefügt */
+header.hidden {
+  max-height: 0 !important;
+  min-height: 0 !important; /* Setzt auch die Mindesthöhe auf 0 */
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  opacity: 0;
+}
+.contact-info {
+    position: absolute;
+    left: 50px;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0; /* Entfernt den Standard-Margin des h1-Elements */
+    font-size: 2.5rem; /* Setzt die Schriftgröße des Titels auf 2.5rem */
+}
+
+section {
+    scroll-margin-top: 200px; /* Höhe Ihrer Navigation hier eintragen */
+}
+
+.logo {
+    position: absolute; /* Setzt das Logo absolut innerhalb des Headers */
+    right: 50px; /* Positioniert das Logo 50px vom rechten Rand des Headers entfernt */
+    top: 50%; /* Positioniert das Logo vertikal in der Mitte des Headers */
+    transform: translateY(-50%); /* Korrigiert die vertikale Position, um das Logo genau zu zentrieren */
+    height: 115px; /* Setzt die Höhe des Logos auf 115px */
+    transition: transform 0.3s ease; /* Für flüssige Übergänge */
+}
+    .speech-bubble {
+        position: absolute;
+        background:  #777777;
+        color: #EAEAEA;
+        padding: 10px 10px;
+        right: 170px;
+        border-radius: 10px;
+        max-width: 200px;
+        font-size: 16px;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Der "Pfeil" der Sprechblase */
+      .speech-bubble::after {
+        content: "";
+        position: absolute;
+        top: 50%;  /* Mittig zur Blase */
+        right: -10px;  /* Position rechts außerhalb der Blase */
+        transform: translateY(-50%); /* Exakte vertikale Zentrierung */
+        
+        width: 0;
+        height: 0;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        border-left: 10px solid #005e3f; /* Linke Grenze = gefärbter Pfeil */
+      }
+      
+
+.vollbild-div {
+    position: relative; /* Ermöglicht die Platzierung des Hintergrund-Overlays */
+    width: 100%; 
+    height: 100vh; 
+    padding: 60px; 
+    
+    /* Flexbox hier aktivieren, um den Text perfekt in der Mitte der Box zu zentrieren */
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; /* Zentriert vertikal */
+    align-items: center;     /* Zentriert horizontal */
+    margin-bottom: 50px;
+}
+
+/* Dieser Teil blendet das Bild unabhängig vom Text ein */
+.vollbild-div::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -1; /* Schiebt das Bild hinter den Text */
+    
+    background-image: url('../images/Hintergrund-Telefon.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    filter: grayscale(100%);
+    opacity: 0.5; /* Macht NUR das Bild transparent, nicht den Text! */
+}
+
+.farbiger-text {
+    color: #005e3f; /* Dein sattes Dunkelgrün leuchtet jetzt richtig */
+    text-align: center; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); 
+    max-width: 800px; /* Verhindert, dass der Text auf großen Bildschirmen zu langgezogen wird */
+    margin-bottom: 700px;
+}
+
+.konto {
+text-decoration: none; /* Entfernt den Unterstrich */
+position: absolute;
+background-color: #005e3f; 
+margin-left: 800px;
+color: #EAEAEA;             /* Schriftfarbe */
+padding: 10px 20px;       /* Innenabstand */
+border: none;             /* Rahmen entfernen */
+border-radius: 20px;       /* Abgerundete Ecken */
+cursor: pointer;          /* Zeiger-Maussymbol */
+font-family: Arial, sans-serif;
+font-size: 1.5rem;
+margin-top: 150px;
+
+}
+
+/* Hover-Effekt für Bilder */
+/* Hover-Effekt für alle Bilder, außer das mit der Klasse "profilbild" */
+img:not(.profilbild):hover {
+    animation: shake 0.5s;
+    animation-iteration-count: infinite;
+}
+
+/* Definiert die Schüttel-Animation */
+@keyframes shake {
+    0% { 
+        transform: translateY(-50%) translate(1px, 1px) rotate(0deg); /* Anfangszustand */
+    }
+    10% { 
+        transform: translateY(-50%) translate(-1px, -2px) rotate(-1deg); /* Schütteln */
+    }
+    20% { 
+        transform: translateY(-50%) translate(-3px, 0px) rotate(1deg); /* Schütteln */
+    }
+    30% { 
+        transform: translateY(-50%) translate(3px, 2px) rotate(0deg); /* Schütteln */
+    }
+    40% { 
+        transform: translateY(-50%) translate(1px, -1px) rotate(1deg); /* Schütteln */
+    }
+    50% { 
+        transform: translateY(-50%) translate(-1px, 2px) rotate(-1deg); /* Schütteln */
+    }
+    60% { 
+        transform: translateY(-50%) translate(-3px, 1px) rotate(0deg); /* Schütteln */
+    }
+    70% { 
+        transform: translateY(-50%) translate(3px, 1px) rotate(-1deg); /* Schütteln */
+    }
+    80% { 
+        transform: translateY(-50%) translate(-1px, -1px) rotate(1deg); /* Schütteln */
+    }
+    90% { 
+        transform: translateY(-50%) translate(1px, 2px) rotate(0deg); /* Schütteln */
+    }
+    100% { 
+        transform: translateY(-50%) translate(1px, -2px) rotate(-1deg); /* Endzustand */
+    }
+}
+
+/* Navigation */
+nav {
+    display: flex; /* Verwendet Flexbox für die Navigation */
+    justify-content: center; /* Zentriert die Navigationslinks horizontal */
+    background-color: #005e3f; /* Setzt den Hintergrund der Navigation */
+    margin-bottom: 20px;
+
+    /* Wichtig für die Animation */
+    min-height: 40px; /* Passe dies an die normale Höhe deiner Nav-Leiste an */
+    max-height: 150px;
+    overflow: hidden;
+    opacity: 1;
+    
+    /* Die flüssige Animation (inklusive Margin) */
+    transition: max-height 0.6s ease-in-out, 
+                min-height 0.6s ease-in-out, 
+                padding 0.6s ease-in-out, 
+                margin-bottom 0.6s ease-in-out, 
+                opacity 0.4s ease-in-out;
+}
+
+/* KORREKTUR: Kommentar-Syntax repariert und margin-bottom auf 0 gesetzt */
+nav.hidden {
+    max-height: 0 !important;
+    min-height: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important; /* Verhindert eine leere Lücke nach dem Ausblenden */
+    opacity: 0;
+}
+
+nav a {
+    color: #EAEAEA; /* Setzt die Textfarbe der Links auf weiß */
+    padding: 14px 20px; /* Fügt den Links Innenabstände hinzu (14px oben und unten, 20px links und rechts) */
+    text-decoration: none; /* Entfernt die Unterstreichung von Links */
+    text-align: center; /* Zentriert den Text innerhalb des Links */
+}
+
+nav a:hover {
+    background-color: #50C878; /* Setzt den Hintergrund auf Grau, wenn der Benutzer mit der Maus über den Link fährt */
+}
+
+.video-layout-container {
+    display: flex;
+    gap: 20px; /* Abstand zwischen Video und Kommentaren */
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    width: 80%;
+}
+
+/* Das Video nimmt 70% der Breite ein */
+.video-box {
+    flex: 7;
+}
+
+/* Macht das YouTube-Video responsiv (16:9) */
+.video-wrapper {
+    display: flex;
+    justify-content: center; /* Zentriert das Video horizontal */
+    align-items: center; /* Zentriert das Video vertikal */
+    width: 100%; /* Nutzt die volle Breite der Website */
+}
+
+.video-wrapper iframe {
+    width: 100%; /* Das Video füllt den Container komplett aus */
+    max-width: 100%; /* Verhindert, dass das Video über den Bildschirmrand hinausragt */
+    border: 20px solid #005e3f; /* Erstellt einen soliden grünen Rahmen */
+    box-sizing: border-box; /* Sorgt dafür, dass der Rahmen die Videogröße nicht verzerrt */
+    filter: grayscale(50%);
+}
+
+/* Die Kommentare nehmen 30% der Breite ein */
+.comments-box {
+    color: #EAEAEA;
+    flex: 3;
+    padding: 15px;
+    max-height: 460px; /* Begrenzt die Höhe */
+    overflow-y: scroll; /* WICHTIG: Erzwingt, dass das Scroll-System permanent aktiv ist */
+    background-color: #777777; /* Setzt den Hintergrund der Retro-Monitore auf grau */
+    border: 8px solid #005e3f; /* Fügt einen grünen Rand hinzu */
+    border-radius: 15px; /* Abgerundete Ecken */
+    box-shadow: 0 10px 15px #87AFC7; /* Fügt einen Schatteneffekt hinzu */
+    font-family: 'Courier New', Courier, monospace; /* Setzt die Schriftart auf 'Courier New' */
+    
+    /* Für Firefox: Aktiviert und färbt den permanenten Balken */
+    scrollbar-width: auto; 
+    scrollbar-color: #c0c0c0 #e0e0e0;
+}
+
+/* GRÜNE TRENNLINIE ZWISCHEN DEN KOMMENTAREN */
+.comment {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #005e3f; /* Die grüne Linie */
+    padding-bottom: 10px;
+}
+
+.comment-user {
+    font-weight: bold;
+    font-size: 0.9em;
+    color: #EAEAEA;
+}
+
+/* =======================================================
+   RETRO SCROLLBALKEN (Für Chrome, Safari, Edge, Opera)
+   ======================================================= */
+.comments-box::-webkit-scrollbar {
+    width: 20px; /* Breite des klassischen Balkens */
+    display: block !important;
+}
+
+/* Der Hintergrund des Scrollbalkens (Schachbrett-Muster-Effekt) */
+.comments-box::-webkit-scrollbar-track {
+    background-color: #e0e0e0;
+    background-image: linear-gradient(45deg, #c0c0c0 25%, transparent 25%, transparent 75%, #c0c0c0 75%, #c0c0c0),
+                      linear-gradient(45deg, #c0c0c0 25%, transparent 25%, transparent 75%, #c0c0c0 75%, #c0c0c0);
+    background-size: 4px 4px;
+    background-position: 0 0, 2px 2px;
+}
+
+/* Der scrollbare Block (Klassisches graues 3D-Design) */
+.comments-box::-webkit-scrollbar-thumb {
+    background-color: #c0c0c0;
+    border: 2px solid;
+    border-color: #fff #808080 #808080 #fff; /* 3D-Effekt nach außen */
+}
+
+/* Effekt beim Drücken auf den Balken */
+.comments-box::-webkit-scrollbar-thumb:active {
+    background-color: #c0c0c0;
+    border-color: #808080 #fff #fff #808080; /* Drückt den Button optisch ein */
+}
+
+/* Für kleinere Bildschirme (z.B. Smartphones): Video und Kommentare untereinander */
+@media (max-width: 768px) {
+    .video-layout-container {
+        flex-direction: column;
+    }
+    .video-box, .comments-box {
+        flex: none;
+        width: 100%;
+    }
+}
+ 
+.callToAction h2,
+.callToAction p
+{
+    color: #005e3f;
+    text-align: center;
+    margin: 40px;
+}
+
+table {
+    width: 80%;
+    color: #EAEAEA;
+    background-color:  #777777; 
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    border: 8px solid #005e3f; /* Fügt einen gelben Rand hinzu */
+    border-radius: 15px; /* Abgerundete Ecken */
+    box-shadow: 0 10px 15px #87AFC7; /* Fügt einen Schatteneffekt hinzu */
+    border-spacing: 0; /* Verhindert einen Abstand zwischen den Zellen */
+    font-family: 'Courier New', Courier, monospace; /* Setzt die Schriftart auf 'Courier New' für Retro-Optik */
+}
+th, td {
+    border: 1px solid #005e3f;
+    padding: 8px;
+    text-align: left;
+}
+th {
+    background-color:  #777777; /* Kopfzeilen etwas dunkler */
+}
+
+/* Footer */
+footer {
+    background-color:#005e3f; /* Setzt den Hintergrund des Footers auf Gelb */
+    color: #EAEAEA; /* Setzt die Textfarbe im Footer auf Weiß */
+    text-align: center; /* Zentriert den Text im Footer */
+    padding: 10px 0; /* Fügt dem Footer Innenabstände hinzu */
+    /*position: fixed; /* Macht den Footer fest, damit er immer unten bleibt */
+    width: 100%; /* Stellt sicher, dass der Footer die gesamte Breite nutzt */
+    bottom: 0; /* Positioniert den Footer am unteren Rand des Bildschirms */
+    margin-top: 50px; /* Fügt Abstand zum letzten Inhaltselement hinzu */
+}
+
+/* Responsiveness */
+@media (max-width: 1300px) {
+    header {
+        flex-direction: column; /* Stellt sicher, dass der Header auf kleinen Bildschirmen vertikal ausgerichtet wird */
+        text-align: center; /* Setzt den Text im Header auf zentriert */
+    }
+
+    .logo {
+        position: static; /* Stellt sicher, dass das Logo auf kleineren Bildschirmen nicht mehr absolut positioniert ist */
+        margin-top: 20px; /* Fügt oben einen Abstand zum Logo hinzu */
+        height: 80px; /* Reduziert die Höhe des Logos */
+    }
+
+    .speech-bubble {
+        position: static; /* Stellt sicher, dass das Logo auf kleineren Bildschirmen nicht mehr absolut positioniert ist */
+        margin-bottom: 20px; /* Fügt oben einen Abstand zum Logo hinzu */
+        height: 20px; /* Reduziert die Höhe des Logos */
+        font-size: 12px;
+    }
+
+    nav {
+        flex-direction: column; /* Ordnet die Navigationselemente vertikal an */
+    }
+
+    nav a {
+        padding: 10px; /* Fügt den Links kleinere Innenabstände hinzu */
+        width: 100px; /* Setzt eine feste Breite für die Links */
+        text-align: center; /* Zentriert den Text innerhalb der Links */
+    }
+
+    .main-content {
+        flex-direction: row; /* Stellt sicher, dass die Retro-Monitore nebeneinander angezeigt werden */
+        justify-content: center; /* Zentriert die Retro-Monitore horizontal */
+        flex-wrap: wrap; /* Wenn nötig, wird der Inhalt umgebrochen */
+    }
+
+    .retro-monitor {
+        width: 200px; /* Setzt eine feste Breite für die Retro-Monitore */
+    }
+
+    .footer {
+        position: static; /* Stellt sicher, dass der Footer nicht fixiert wird, sondern am Ende der Seite erscheint */
+    }
+
+}
+
+.chat-window {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    height: 400px;
+    background-color: #005e3f;
+    color: #EAEAEA;
+    border: 3px solid black;
+    display: none; /* unsichtbar, bis Adler geklickt wird */
+    flex-direction: column;
+    font-family: monospace;
+    z-index: 1000;
+}
+
+.chat-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px;
+    border-bottom: 2px solid #EAEAEA;
+    font-weight: bold;
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+#chatInput {
+    width: calc(100% - 60px);
+    padding: 5px;
+    background-color: #777777;
+    color: #EAEAEA;
+    border: 1px solid black;
+}
+
+#sendBtn {
+    width: 60px;
+    background-color: #A52A2A;
+    color: #EAEAEA;
+    border: none;
+    cursor: pointer;
+}
+
+/* --- Sektion für das Gratis-Testpaket --- */
+.freeTrialSection {
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 40px 20px;
+    font-family: sans-serif;
+}
+
+.freeTrialHeader {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.freeTrialHeader h2 {
+    color: #005e3f;
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.freeTrialHeader p {
+    color: #005e3f;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+/* --- Das Onboarding-Formular --- */
+.onboardingForm fieldset {
+    border: 2px solid #e0e6e4;
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 30px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.onboardingForm legend {
+    font-weight: bold;
+    color: #005e3f;
+    font-size: 1.15rem;
+    padding: 0 15px;
+    background-color: #ffffff;
+}
+
+.onboardingForm p {
+    margin: 0 0 8px 0;
+    color: #005e3f;
+    font-size: 1rem;
+}
+
+/* Eingabefelder (Text, Email, URL und Textarea) */
+.onboardingForm input[type="text"],
+.onboardingForm input[type="email"],
+.onboardingForm input[type="url"],
+.onboardingForm textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #c8d4d0;
+    border-radius: 6px;
+    font-size: 1rem;
+    color: #333;
+    background-color: #fafbfc;
+    box-sizing: border-box; /* Verhindert, dass Felder über den Rand rutschen */
+    transition: border-color 0.2s, box-shadow 0.2s;
+    margin-bottom: 4px;
+}
+
+/* Fokus-Effekt beim Reinklicken (Edler Grünton) */
+.onboardingForm input:focus,
+.onboardingForm textarea:focus {
+    border-color: #4caf50;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.15);
+    outline: none;
+    background-color: #ffffff;
+}
+
+/* Kleine Hinweistexte unter den Feldern */
+.onboardingForm small {
+    display: block;
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+/* Letztes Element im Fieldset braucht keinen unteren Abstand */
+.onboardingForm small:last-of-type {
+    margin-bottom: 0;
+}
+
+/* --- Absende-Bereich & Button --- */
+.formSubmit {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.formSubmit label {
+    font-size: 0.95rem;
+    color: #333;
+    cursor: pointer;
+}
+
+.formSubmit input[type="checkbox"] {
+    transform: scale(1.1);
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.formSubmit button {
+    background-color: #2e4d44;
+    color: #ffffff;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(46, 77, 68, 0.2);
+    transition: background-color 0.2s, transform 0.1s;
+    margin-top: 15px;
+}
+
+/* Hover-Effekte für den Absende-Button */
+.formSubmit button:hover {
+    background-color: #1a332c;
+    box-shadow: 0 6px 20px rgba(26, 51, 44, 0.3);
+}
+
+.formSubmit button:active {
+    transform: scale(0.98);
+}
+
+/* --- Die Steuer-Zusammenfassung (Checkout) --- */
+.checkoutSummary {
+    background-color: #f4f7f6;
+    border-left: 4px solid #2e4d44;
+    padding: 25px;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.checkoutSummary h3 {
+    margin-top: 0;
+    color: #1a332c;
+    font-size: 1.2rem;
+}
+
+.checkoutSummary ul {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+}
+
+.checkoutSummary li {
+    padding: 8px 0;
+    border-bottom: 1px solid #e0e6e4;
+    color: #333;
+}
+
+.checkoutSummary li:last-child {
+    border-bottom: none;
+    font-size: 1.1rem;
+}
+
+.checkoutSummary p {
+    font-size: 0.85rem;
+    color: #555;
+    line-height: 1.5;
+    margin: 15px 0 0 0;
+}
+
+        /* Styling für den gesamten Balken */
+        details {
+            font-family: Arial, sans-serif;
+            border: 1.5px solid #005e3f;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            width: 80%;
+            box-shadow: 0 10px 15px #87AFC7;
+            margin: 0 auto;
+        }
+
+        /* Styling für den sichtbaren Header (den Balken) */
+        summary {
+            padding: 15px;
+            font-family: 'Courier New', Courier, monospace; /* Setzt die Schriftart auf 'Courier New' */
+            font-weight: bold;
+            background-color: #777777;
+            color: #EAEAEA;
+            cursor: pointer;
+            list-style: none; /* Entfernt den Standard-Pfeil in manchen Browsern */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Kleiner visueller Indikator (Pfeil), der sich dreht */
+        summary::after {
+            content: '▼';
+            font-size: 0.8em;
+            transition: transform 0.3s ease;
+        }
+
+        /* Dreht den Pfeil um, wenn der Balken geöffnet ist */
+        details[open] summary::after {
+            transform: rotate(180deg);
+        }
+
+        /* Styling für den verborgenen Inhalt, der aufklappt */
+        .content {
+            padding: 15px;
+            background-color: #C7C7C9;
+            border-top: 1px solid #005e3f;
+            line-height: 1.5;
+            font-family: 'Courier New', Courier, monospace; /* Setzt die Schriftart auf 'Courier New' */
+
+        }
