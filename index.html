@@ -463,62 +463,75 @@ fetch('./posts/pc-beschleunigen.html')
 </script>
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-    const banner = document.getElementById("cookie-banner");
-    const btnAcceptAll = document.getElementById("btn-accept-all");
-    const btnAcceptSelected = document.getElementById("btn-accept-selected");
-    const paymentCheckbox = document.getElementById("cookie-payment");
+document.addEventListener('DOMContentLoaded', function () {
+    const banner = document.getElementById('cookie-banner');
+    const btnAcceptAll = document.getElementById('btn-accept-all');
+    const btnAcceptSelected = document.getElementById('btn-accept-selected');
+    const paymentCheckbox = document.getElementById('cookie-payment');
 
     // Prüfen, ob bereits eine Entscheidung getroffen wurde
-    const consent = localStorage.getItem("cookieConsent");
+    const consent = localStorage.getItem('cookieConsent');
 
     if (!consent) {
-        banner.style.display = "block";
-    } else if (JSON.parse(consent).payment === true) {
-        loadPaymentScripts();
+        if (banner) banner.style.display = 'block';
+    } else {
+        try {
+            const consentData = JSON.parse(consent);
+            if (consentData && consentData.payment === true) {
+                loadPaymentScripts();
+            }
+        } catch (e) {
+            console.error("Fehler beim Parsen der Cookie-Einwilligung:", e);
+            if (banner) banner.style.display = 'block';
+        }
     }
 
-    // Funktion zum dynamischen Laden der Skripte
+    // Funktion zum dynamischen Laden der Skripte (REPARIERT)
     function loadPaymentScripts() {
         console.log("Lade PayPal und Stripe...");
-        
-        // Stripe laden
-        if (!document.querySelector('script[src="https://stripe.com"')) {
-            const stripeScript = document.createElement("script");
-            stripeScript.src = "https://stripe.com";
+
+        // 1. Stripe laden (Offizielle JS-Bibliotheks-URL v3)
+        if (!document.querySelector('script[src="https://stripe.com"]')) {
+            const stripeScript = document.createElement('script');
+            stripeScript.src = 'https://stripe.com';
             stripeScript.async = true;
             document.head.appendChild(stripeScript);
         }
 
-        // PayPal laden (Ersetzen Sie CLIENT-ID mit Ihrer echten ID)
-        if (!document.querySelector('script[src*="://paypal.com"]')) {
-            const paypalScript = document.createElement("script");
-            paypalScript.src = "www.://paypal.com?client-id=YOUR_PAYPAL_CLIENT_ID";
+        // 2. PayPal laden (Korrekte, fehlerfreie SDK-URL)
+        if (!document.querySelector('script[src*="sdk/js"]')) {
+            const paypalScript = document.createElement('script');
+            // HINWEIS: Ersetze 'sb' später durch deine echte PayPal-Live-Client-ID
+            paypalScript.src = 'https://paypal.com';
             paypalScript.async = true;
             document.head.appendChild(paypalScript);
         }
     }
 
     // Event: Alle akzeptieren
-    btnAcceptAll.addEventListener("click", function () {
-        const consentData = { essential: true, payment: true };
-        localStorage.setItem("cookieConsent", JSON.stringify(consentData));
-        banner.style.display = "none";
-        loadPaymentScripts();
-    });
-
-    // Event: Auswahl speichern
-    btnAcceptSelected.addEventListener("click", function () {
-        const isPaymentAllowed = paymentCheckbox.checked;
-        const consentData = { essential: true, payment: isPaymentAllowed };
-        localStorage.setItem("cookieConsent", JSON.stringify(consentData));
-        banner.style.display = "none";
-        
-        if (isPaymentAllowed) {
+    if (btnAcceptAll) {
+        btnAcceptAll.addEventListener('click', function () {
+            const consentData = { essential: true, payment: true };
+            localStorage.setItem('cookieConsent', JSON.stringify(consentData));
+            if (banner) banner.style.display = 'none';
             loadPaymentScripts();
-        }
-    });
+        });
+    }
+
+    // Event: Auswahl保存
+    if (btnAcceptSelected) {
+        btnAcceptSelected.addEventListener('click', function () {
+            const isPaymentAllowed = paymentCheckbox ? paymentCheckbox.checked : false;
+            const consentData = { essential: true, payment: isPaymentAllowed };
+            localStorage.setItem('cookieConsent', JSON.stringify(consentData));
+            if (banner) banner.style.display = 'none';
+            if (isPaymentAllowed) {
+                loadPaymentScripts();
+            }
+        });
+    }
 });
 </script>
+
 
 </html>
