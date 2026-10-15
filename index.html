@@ -204,7 +204,8 @@
 </div>
 
 <section id="kontoanker"> </section>
-<!-- Sektion für den Gratis-Test -->
+
+<!-- Das Feld (freeTrialSection) umschließt jetzt alles, inklusive des Buttons -->
 <div class="freeTrialSection">
     
     <!-- Werbetext / Einstieg -->
@@ -217,26 +218,27 @@
     <form class="onboardingForm" action="#" method="POST">
         
         <!-- Schritt 1: Kontaktdaten -->
-    <fieldset>
-    <legend>1. Ihre Unternehmensdaten</legend>
-    
-    <p><strong>Firmenname:</strong></p>
-    <input type="text" id="companyName" name="companyName" placeholder="z. B. IT-Agentur Hamburg GmbH" required>
-    
-    <p><strong>Ansprechpartner:</strong></p>
-    <input type="text" id="contactName" name="contactName" placeholder="Ihr Vor- und Nachname" required>
+        <fieldset>
+            <legend>1. Ihre Unternehmensdaten</legend>
+            
+            <p><strong>Firmenname:</strong></p>
+            <input type="text" id="companyName" name="companyName" placeholder="z. B. IT-Agentur Hamburg GmbH" required>
+            
+            <p><strong>Ansprechpartner:</strong></p>
+            <input type="text" id="contactName" name="contactName" placeholder="Ihr Vor- und Nachname" required>
 
-    <p><strong>Geschäftliche E-Mail-Adresse:</strong></p>
-    <input type="email" id="businessEmail" name="businessEmail" placeholder="name@ihrefirma.de" required><br>
-    <small>Hinweis: Wir akzeptieren nur echte Firmen-Domains (kein Gmail, WEB.DE oder GMX).</small>
+            <p><strong>Geschäftliche E-Mail-Adresse:</strong></p>
+            <input type="email" id="businessEmail" name="businessEmail" placeholder="name@ihrefirma.de" required><br>
+            <small>Hinweis: Wir akzeptieren nur echte Firmen-Domains (kein Gmail, WEB.DE oder GMX).</small>
 
-    <p><strong>Umsatzsteuer-Identifikationsnummer (USt-IdNr.):</strong></p>
-    <input type="text" id="ustId" name="ustId" placeholder="z. B. DE314159265" required><br>
-    <small>Pflichtfeld für das Reverse-Charge-Verfahren bei Auslandsdienstleistungen.</small>
-    </fieldset>
+            <p><strong>Umsatzsteuer-Identifikationsnummer (USt-IdNr.):</strong></p>
+            <input type="text" id="ustId" name="ustId" placeholder="z. B. DE314159265" required><br>
+            <small>Pflichtfeld für das Reverse-Charge-Verfahren bei Auslandsdienstleistungen.</small>
+        </fieldset>
+
         <br>
 
-        <!-- Schritt 2: Kalender-Verknüpfung (Das wichtigste Puzzleteil) -->
+        <!-- Schritt 2: Kalender-Verknüpfung -->
         <fieldset>
             <legend>2. Ihr Kalender- oder Meeting-Link</legend>
             <p>Wohin dürfen wir die interessierten Geschäftsführer eintragen, wenn wir am Telefon ein Gespräch für Sie vereinbaren?</p>
@@ -260,20 +262,35 @@
 
         <br>
 
-        <!-- Absende-Button -->
+        <!-- Absende-Bereich (Strukturell sicher innerhalb der freeTrialSection) -->
         <div class="formSubmit">
-       <input type="checkbox" id="privacyPolicy" name="privacyPolicy" required>
-        <label for="privacyPolicy">Ich stimme den <a href="datenschutz.html" target="_blank">Datenschutzbestimmungen</a> zu.</label><br><br>
-    
-     <button type="submit">Kostenlos registrieren & 20 Credits sichern</button>
-</div>
+            <input type="checkbox" id="privacyPolicy" name="privacyPolicy" required>
+            <label for="privacyPolicy">Ich stimme den <a href="datenschutz.html" target="_blank">Datenschutzbestimmungen</a> zu.</label>
+            <br><br>
+            <button type="submit">Kostenlos registrieren & 20 Credits sichern</button>
+        </div>
 
     </form>
 </div>
  
+<!-- Sektion: Erstgespräch & Terminvereinbarung -->
+<section id="termin">
+    <h2>Erstgespräch vereinbaren</h2>
+    <p>
+        Wählen Sie ganz unkompliziert Ihren Wunschtermin für ein kostenloses Kennenlern-Gespräch via Microsoft Teams oder Telefon. Wir besprechen Ihr Telefonskript und Ihre Zielgruppe.
+    </p>
+    
+    <!-- Link-Button zu Calendly -->
+    <a href="DEIN_CALENDLY_LINK" target="_blank" rel="noopener noreferrer">
+        Jetzt Wunschtermin wählen ↗
+    </a>
+</section>
+
+ 
+
     
  <!-- Der aufklappbare Balken -->
-    
+ <section>   
  <div class="faqHeader">
     <h3>FAQ</h3>
  </div>
@@ -334,7 +351,7 @@
             <p> Da es sich um eine grenzüberschreitende Auslandsdienstleistung handelt, greift das <b>Reverse-Charge-Verfahren</b>. Wir stellen eine Netto-Rechnung aus. Die Umsatzsteuer wird vom Leistungsempfänger (also von Ihnen) in der eigenen deutschen Buchhaltung deklariert.</b>
         </div>    
     </details>
-
+</section>
     <!-- Der visuelle Anker: Dunkler Footer mit Hybrid-Impressum -->
 <footer class="siteFooter">
     <div class="footerContainer">

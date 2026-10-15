@@ -491,12 +491,17 @@ footer {
     cursor: pointer;
 }
 
-/* --- Sektion für das Gratis-Testpaket --- */
+/* --- Sektion für das Gratis-Testpaket (Jetzt als eine große, geschlossene weiße Box) --- */
 .freeTrialSection {
     max-width: 800px;
     margin: 60px auto;
-    padding: 40px 20px;
+    padding: 40px 30px;                /* Leicht erhöht für bessere Symmetrie */
     font-family: sans-serif;
+    background-color: #ffffff;         /* Weißer Hintergrund für das gesamte Feld inkl. Button */
+    border: 2px solid #e0e6e4;         /* Der elegante Rahmen umschließt jetzt alles */
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Schicker, dezenter Schatten um die ganze Box */
+    box-sizing: border-box;
 }
 
 .freeTrialHeader {
@@ -520,20 +525,19 @@ footer {
 
 /* --- Das Onboarding-Formular --- */
 .onboardingForm fieldset {
-    border: 2px solid #e0e6e4;
-    border-radius: 12px;
-    padding: 30px;
+    border: 1px solid #c8d4d0;         /* Etwas feinerer Innenrahmen für die Schritte */
+    border-radius: 8px;
+    padding: 25px;
     margin-bottom: 30px;
-    background-color: #ffffff;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    background-color: #fafbfc;         /* Leichtes Grau-Blau für die Schritte, hebt sich edel ab */
 }
 
 .onboardingForm legend {
     font-weight: bold;
     color: #005e3f;
     font-size: 1.15rem;
-    padding: 0 15px;
-    background-color: #ffffff;
+    padding: 0 10px;
+    background-color: transparent;     /* Passt sich fließend an */
 }
 
 .onboardingForm p {
@@ -542,128 +546,59 @@ footer {
     font-size: 1rem;
 }
 
-/* Eingabefelder (Text, Email, URL und Textarea) */
-.onboardingForm input[type="text"],
-.onboardingForm input[type="email"],
-.onboardingForm input[type="url"],
-.onboardingForm textarea {
-    width: 100%;
-    padding: 12px 15px;
-    border: 1px solid #c8d4d0;
-    border-radius: 6px;
-    font-size: 1rem;
-    color: #333;
-    background-color: #fafbfc;
-    box-sizing: border-box; /* Verhindert, dass Felder über den Rand rutschen */
-    transition: border-color 0.2s, box-shadow 0.2s;
-    margin-bottom: 4px;
-}
+/* ==========================================================================
+   Sektion: Erstgespräch & Terminvereinbarung (#termin)
+   ========================================================================== */
 
-/* Fokus-Effekt beim Reinklicken (Edler Grünton) */
-.onboardingForm input:focus,
-.onboardingForm textarea:focus {
-    border-color: #4caf50;
-    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.15);
-    outline: none;
-    background-color: #ffffff;
-}
-
-/* Kleine Hinweistexte unter den Feldern */
-.onboardingForm small {
-    display: block;
-    color: #666;
-    font-size: 0.85rem;
-    margin-bottom: 20px;
-    line-height: 1.4;
-}
-
-/* Letztes Element im Fieldset braucht keinen unteren Abstand */
-.onboardingForm small:last-of-type {
-    margin-bottom: 0;
-}
-
-/* --- Absende-Bereich & Button --- */
-.formSubmit {
+#termin {
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 40px 20px;
+    background-color: #f7f9f8; /* Sehr helles, edles Grau-Grün */
+    border: 1px solid #e0e6e4;
+    border-radius: 12px;
     text-align: center;
-    margin-top: 40px;
+    box-sizing: border-box;
 }
 
-.formSubmit label {
-    font-size: 0.95rem;
-    color: #333;
-    cursor: pointer;
+#termin h2 {
+    color: #005e3f; /* Dein originales Phonaro-Dunkelgrün */
+    font-size: 2rem;
+    margin-top: 10px;
+    margin-bottom: 15px;
 }
 
-.formSubmit input[type="checkbox"] {
-    transform: scale(1.1);
-    margin-right: 8px;
-    cursor: pointer;
-}
-
-.formSubmit button {
-    background-color: #2e4d44;
-    color: #ffffff;
-    border: none;
-    padding: 15px 40px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    border-radius: 6px;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(46, 77, 68, 0.2);
-    transition: background-color 0.2s, transform 0.1s;
-    margin-top: 15px;
-}
-
-/* Hover-Effekte für den Absende-Button */
-.formSubmit button:hover {
-    background-color: #1a332c;
-    box-shadow: 0 6px 20px rgba(26, 51, 44, 0.3);
-}
-
-.formSubmit button:active {
-    transform: scale(0.98);
-}
-
-/* --- Die Steuer-Zusammenfassung (Checkout) --- */
-.checkoutSummary {
-    background-color: #f4f7f6;
-    border-left: 4px solid #2e4d44;
-    padding: 25px;
-    border-radius: 0 8px 8px 0;
-    margin-bottom: 30px;
-    text-align: left;
-}
-
-.checkoutSummary h3 {
-    margin-top: 0;
-    color: #1a332c;
-    font-size: 1.2rem;
-}
-
-.checkoutSummary ul {
-    list-style: none;
-    padding: 0;
-    margin: 15px 0;
-}
-
-.checkoutSummary li {
-    padding: 8px 0;
-    border-bottom: 1px solid #e0e6e4;
-    color: #333;
-}
-
-.checkoutSummary li:last-child {
-    border-bottom: none;
-    font-size: 1.1rem;
-}
-
-.checkoutSummary p {
-    font-size: 0.85rem;
+#termin p {
     color: #555;
-    line-height: 1.5;
-    margin: 15px 0 0 0;
+    max-width: 550px;
+    margin: 0 auto 25px auto;
+    line-height: 1.6;
+    font-size: 1.05rem;
 }
-     
+
+/* Der edle B2B-Call-to-Action-Button */
+#termin a {
+    display: inline-block;
+    background-color: #2e4d44; /* Dein zweiter Phonaro-Grünton */
+    color: #ffffff !important;
+    padding: 14px 35px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 12px rgba(46, 77, 68, 0.2);
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+/* Sanftes Vergrößern und Farbwechsel beim Drüberfahren (Hover) */
+#termin a:hover {
+    background-color: #1a332c; /* Dunklerer Ton beim Hovern */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(26, 51, 44, 0.3);
+}
+
+
+
 .faqHeader h3 {
     font-family: 'Courier New', Courier, monospace; /* Setzt die Schriftart auf 'Courier New' */
     color: #EAEAEA;;
