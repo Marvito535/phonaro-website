@@ -712,13 +712,13 @@ footer {
         }
 
 
-/* WhatsApp-Button - Fest oben links (scrollt ganz natürlich nach oben weg) */
+/* WhatsApp-Button - Bombenfest oben links fixiert */
 .whatsapp-float {
-    position: absolute !important; /* Geändert von fixed auf absolute */
-    top: 33px !important;    /* 20 Pixel Abstand zum oberen Rand des Headers */
+    position: absolute !important; /* Fixed reißt das Element aus dem Header-Layout heraus */
+    top: 33px !important;       /* 20 Pixel Abstand zum oberen Bildschirmrand */
+    left: 5px !important;      /* 20 Pixel Abstand zum linken Bildschirmrand */
     width: 55px !important;
     height: 55px !important;
-    z-index: 999999 !important; /* Bleibt auf oberster Ebene anklickbar */
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
