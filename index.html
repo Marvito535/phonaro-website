@@ -440,4 +440,29 @@ fetch('./posts/pc-beschleunigen.html')
   });
 </script>
 
+<!-- Einfaches, rechtssicheres Cookie-Banner ohne monatliche Kosten -->
+<link rel="stylesheet" href="https://jsdelivr.net">
+<script defer src="https://jsdelivr.net"></script>
+<script>
+    window.addEventListener('load', function(){
+        var cc = initCookieConsent();
+        cc.run({
+            current_lang: 'de',
+            autoclear_cookies: true,
+            page_scripts: true,
+            languages: {
+                'de': {
+                    consent_modal: {
+                        title: 'Wir schätzen Ihre Privatsphäre',
+                        description: 'Diese Website nutzt essenzielle Cookies von Zahlungsdienstleistern (Stripe/PayPal), um den sicheren Bestellprozess unserer Prepaid-Pakete zu gewährleisten. <a href="datenschutz.html" class="cc-link">Datenschutzerklärung</a>',
+                        primary_btn: { text: 'Alle akzeptieren', role: 'accept_all' },
+                        secondary_btn: { text: 'Nur essenzielle', role: 'accept_necessary' }
+                    }
+                }
+            }
+        });
+    });
+</script>
+
+
 </html>
