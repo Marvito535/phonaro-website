@@ -710,3 +710,39 @@ footer {
             font-family: 'Courier New', Courier, monospace; /* Setzt die Schriftart auf 'Courier New' */
 
         }
+
+
+/* WhatsApp-Button - Fest oben links (scrollt ganz natürlich nach oben weg) */
+.whatsapp-float {
+    position: absolute !important; /* Geändert von fixed auf absolute */
+    top: 33px !important;    /* 20 Pixel Abstand zum oberen Rand des Headers */
+    width: 55px !important;
+    height: 55px !important;
+    z-index: 999999 !important; /* Bleibt auf oberster Ebene anklickbar */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-decoration: none !important;
+    transition: transform 0.2s ease-in-out !important;
+    cursor: pointer !important;
+}
+
+/* Geschmeidiger Vergrößerungs-Effekt beim Drüberfahren */
+.whatsapp-float:hover {
+    transform: scale(1.1) !important;
+}
+
+/* Perfekte Größe für dein lokales WhatsApp-Bild */
+.whatsapp-float img {
+    width: 60% !important;
+    height: 60% !important;
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    pointer-events: none !important;
+}
+
+
+
+
+
