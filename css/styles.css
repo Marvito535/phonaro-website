@@ -663,22 +663,31 @@ footer {
     line-height: 1.5;
     margin: 15px 0 0 0;
 }
-
+     
+.faqHeader h3 {
+    font-family: 'Courier New', Courier, monospace; /* Setzt die Schriftart auf 'Courier New' */
+    color: #EAEAEA;;
+    font-size: 2rem;
+    width: 80%;
+    border: 1.5px solid #005e3f;
+    background-color: #005e3f;
+    margin: 0 auto;
+    text-align: center;
+}
         /* Styling für den gesamten Balken */
         details {
-            font-family: Arial, sans-serif;
             border: 1.5px solid #005e3f;
             overflow: hidden;
             transition: all 0.3s ease;
             width: 80%;
-            box-shadow: 0 10px 15px #87AFC7;
             margin: 0 auto;
+            font-family: 'Courier New', Courier, monospace; /* Setzt die Schriftart auf 'Courier New' */
+
         }
 
         /* Styling für den sichtbaren Header (den Balken) */
         summary {
             padding: 15px;
-            font-family: 'Courier New', Courier, monospace; /* Setzt die Schriftart auf 'Courier New' */
             font-weight: bold;
             background-color: #777777;
             color: #EAEAEA;
@@ -707,8 +716,6 @@ footer {
             background-color: #C7C7C9;
             border-top: 1px solid #005e3f;
             line-height: 1.5;
-            font-family: 'Courier New', Courier, monospace; /* Setzt die Schriftart auf 'Courier New' */
-
         }
 
 
