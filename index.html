@@ -19,6 +19,28 @@
         <img src="images/adler.png" alt="Logo" class="logo">
     </header>
 
+    <!-- DSGVO Cookie Banner -->
+<div id="cookie-banner" class="cookie-banner" style="display: none;">
+    <div class="cookie-content">
+        <h3>Datenschutzeinstellungen</h3>
+        <p>Wir nutzen Zahlungsdienstleister wie <strong>PayPal</strong> und <strong>Stripe</strong>, um eine sichere Zahlung zu ermöglichen. Dabei werden Daten an Dritte übertragen. Bitte stimmen Sie der Nutzung zu.</p>
+        
+        <div class="cookie-options">
+            <label>
+                <input type="checkbox" id="cookie-essential" checked disabled> Esenziell (Website-Funktion)
+            </label>
+            <label>
+                <input type="checkbox" id="cookie-payment"> Zahlungsabwicklung (PayPal & Stripe)
+            </label>
+        </div>
+
+        <div class="cookie-buttons">
+            <button id="btn-accept-all" class="btn btn-primary">Alle akzeptieren</button>
+            <button id="btn-accept-selected" class="btn btn-secondary">Auswahl speichern</button>
+        </div>
+    </div>
+</div>
+
     <!-- Chatfenster -->
 <div id="chatWindow" class="chat-window">
     <div class="chat-header">
@@ -438,6 +460,65 @@ fetch('./posts/pc-beschleunigen.html')
     document.querySelector('#blog-content').textContent =
       'Fehler beim Laden des Blogartikels.';
   });
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const banner = document.getElementById("cookie-banner");
+    const btnAcceptAll = document.getElementById("btn-accept-all");
+    const btnAcceptSelected = document.getElementById("btn-accept-selected");
+    const paymentCheckbox = document.getElementById("cookie-payment");
+
+    // Prüfen, ob bereits eine Entscheidung getroffen wurde
+    const consent = localStorage.getItem("cookieConsent");
+
+    if (!consent) {
+        banner.style.display = "block";
+    } else if (JSON.parse(consent).payment === true) {
+        loadPaymentScripts();
+    }
+
+    // Funktion zum dynamischen Laden der Skripte
+    function loadPaymentScripts() {
+        console.log("Lade PayPal und Stripe...");
+        
+        // Stripe laden
+        if (!document.querySelector('script[src="https://stripe.com"')) {
+            const stripeScript = document.createElement("script");
+            stripeScript.src = "https://stripe.com";
+            stripeScript.async = true;
+            document.head.appendChild(stripeScript);
+        }
+
+        // PayPal laden (Ersetzen Sie CLIENT-ID mit Ihrer echten ID)
+        if (!document.querySelector('script[src*="://paypal.com"]')) {
+            const paypalScript = document.createElement("script");
+            paypalScript.src = "www.://paypal.com?client-id=YOUR_PAYPAL_CLIENT_ID";
+            paypalScript.async = true;
+            document.head.appendChild(paypalScript);
+        }
+    }
+
+    // Event: Alle akzeptieren
+    btnAcceptAll.addEventListener("click", function () {
+        const consentData = { essential: true, payment: true };
+        localStorage.setItem("cookieConsent", JSON.stringify(consentData));
+        banner.style.display = "none";
+        loadPaymentScripts();
+    });
+
+    // Event: Auswahl speichern
+    btnAcceptSelected.addEventListener("click", function () {
+        const isPaymentAllowed = paymentCheckbox.checked;
+        const consentData = { essential: true, payment: isPaymentAllowed };
+        localStorage.setItem("cookieConsent", JSON.stringify(consentData));
+        banner.style.display = "none";
+        
+        if (isPaymentAllowed) {
+            loadPaymentScripts();
+        }
+    });
+});
 </script>
 
 </html>
