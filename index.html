@@ -393,71 +393,16 @@
         </div>
 
     </div>
-
-<script defer="defer" type="text/javascript" src="http://178.104.12.70:8069/im_livechat/loader/2"></script> <script defer="defer" type="text/javascript" src="http://178.104.12.70:8069/im_livechat/assets_embed.js"></script>
+    <script defer="defer" type="text/javascript" src="https://crm.phonaro.de/im_livechat/loader/2"></script>
+    <script defer="defer" type="text/javascript" src="https://crm.phonaro.de/im_livechat/assets_embed.js"></script>
 </footer>
 </body>
-<!-- Die offiziellen Odoo-Skripte (Laden die Verbindung zu deinem Hetzner-Server) -->
-    <script type="text/javascript">
-        if (!window.odoo) { window.odoo = {}; }
-        odoo.__session_info__ = { websocket_worker_version: "18.0-7" };
-        odoo.__session_info__.livechatData = {
-            isAvailable: true,
-            serverUrl: "http://178.104.12.70:8069",
-            options: { "channel_id": 2, "channel_name": "Phonaro Support" }
-        };
-    </script>
-    <script defer="defer" type="text/javascript" src="https://phonaro.de"></script>
-    <script defer="defer" type="text/javascript" src="https://phonaro.de"></script>
-
-
-    <!-- Die Brücke: Verbindet DEIN grünes Fenster mit Odoos Motor -->
-    <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const sendBtn = document.getElementById("sendBtn");
-        const chatInput = document.getElementById("chatInput");
-        const chatMessages = document.getElementById("chatMessages");
-
-        function sendMessageToOdoo() {
-            const text = chatInput.value.trim();
-            if (!text) return;
-
-            // 1. Nachricht in DEINEM schönen grünen Chatfenster anzeigen
-            const msgParagraph = document.createElement("p");
-            msgParagraph.style.margin = "5px 0";
-            msgParagraph.innerHTML = `<b>Du:</b> ${text}`;
-            chatMessages.appendChild(msgParagraph);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-
-            // 2. Die Nachricht direkt an Odoo im Hintergrund übergeben
-            if (window.OdooLivechat && typeof window.OdooLivechat.send_message === "function") {
-                window.OdooLivechat.send_message(text);
-            } else if (window.odoo && window.odoo.discuss) {
-                // Alternativer Trigger für Odoo 18 Core
-                window.dispatchEvent(new CustomEvent("odoo-livechat-send-message", { detail: { message: text } }));
-            }
-
-            chatInput.value = "";
-        }
-
-        // Klick auf den Senden-Button aktivieren
-        if (sendBtn) {
-            sendBtn.addEventListener("click", sendMessageToOdoo);
-        }
-
-        // Enter-Taste im Eingabefeld aktivieren
-        if (chatInput) {
-            chatInput.addEventListener("keydown", (ev) => {
-                if (ev.key === "Enter") {
-                    sendMessageToOdoo();
-                }
-            });
-        }
-    });
-    </script>
 
     <script>
-   // cookie banner
+   /* ######################
+      COOKIE BANNER
+      ###################### */
+
 document.addEventListener("DOMContentLoaded", function () {
     const banner = document.getElementById("cookie-banner");
     const btnAcceptAll = document.getElementById("btn-accept-all");
@@ -507,9 +452,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 </script>
-</body>
 
-<script>window.addEventListener('scroll', function() {
+
+<script>
+/*############### 
+HEADER ANIMATION
+############### */
+window.addEventListener('scroll', function() {
   const header = document.querySelector('header');
   const nav = document.querySelector('nav');
   
@@ -523,114 +472,5 @@ document.addEventListener("DOMContentLoaded", function () {
     nav.classList.remove('hidden');
   }
 });</script>
-
-<script>
-const chatWindow = document.getElementById('chatWindow');
-const chatInput = document.getElementById('chatInput');
-const chatMessages = document.getElementById('chatMessages');
-const sendBtn = document.getElementById('sendBtn');
-const closeBtn = document.getElementById('closeChat');
-const logo = document.querySelector('.logo');
-
-// Öffnen beim Klick auf den Adler
-logo.addEventListener('click', () => {
-    chatWindow.style.display = 'flex';
-});
-
-// Schließen
-closeBtn.addEventListener('click', () => {
-    chatWindow.style.display = 'none';
-});
-
-// Nachricht senden
-sendBtn.addEventListener('click', () => {
-    const text = chatInput.value.trim();
-    if (text !== '') {
-        const p = document.createElement('p');
-        p.textContent = 'Du: ' + text;
-        chatMessages.appendChild(p);
-        chatInput.value = '';
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-
-        // Beispiel-Antwort vom Support
-        setTimeout(() => {
-            const response = document.createElement('p');
-            response.textContent = 'Support: Danke für deine Nachricht!';
-            chatMessages.appendChild(response);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }, 1000);
-    }
-});
-
-// AUTOMATISCHES ÖFFNEN NACH 5 SEKUNDEN
-setTimeout(() => {
-    chatWindow.style.display = 'flex';
-}, 5000);
-</script>
-
-<script>
-fetch('./posts/pc-beschleunigen.html')
-  .then(res => res.text())
-  .then(html => {
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(html, 'text/html');
-    const latestArticle = doc.querySelector('.blog-article'); // oder die passende Klasse
-    if (latestArticle) {
-      document.querySelector('#blog-content').innerHTML =
-        latestArticle.outerHTML;
-    } else {
-      document.querySelector('#blog-content').textContent =
-        'Kein Artikel gefunden.';
-    }
-  })
-  .catch(() => {
-    document.querySelector('#blog-content').textContent =
-      'Fehler beim Laden des Blogartikels.';
-  });
-</script>
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    const sendBtn = document.getElementById("sendBtn");
-    const chatInput = document.getElementById("chatInput");
-    const chatMessages = document.getElementById("chatMessages");
-
-    function sendMessageToOdoo(text) {
-        if (!text.trim()) return;
-
-        // 1. Zeige die Nachricht in DEINEM grünen Chatfenster an
-        const userMessage = document.createElement("p");
-        userMessage.style.textAlign = "right";
-        userMessage.style.margin = "5px 0";
-        userMessage.innerHTML = `<b>Du:</b> ${text}`;
-        chatMessages.appendChild(userMessage);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-
-        // 2. JETZT DIE DIREKTE BRÜCKE ZU ODOO SCHLAGEN:
-        // Wir prüfen, ob Odoos Livechat-Widget auf der Seite geladen ist
-        if (window.OdooLivechat && typeof window.OdooLivechat.send_message === "function") {
-            // Sendet den Text direkt an deinen Hetzner-Server im Hintergrund
-            window.OdooLivechat.send_message(text);
-        } else {
-            console.log("Odoo Livechat lädt noch oder die Verbindung zum Server steht noch nicht.");
-        }
-
-        // Feld leeren
-        chatInput.value = "";
-    }
-
-    // Klick-Event für den Button
-    sendBtn.addEventListener("click", () => {
-        sendMessageToOdoo(chatInput.value);
-    });
-
-    // Enter-Taste im Eingabefeld abfangen
-    chatInput.addEventListener("keydown", (ev) => {
-        if (ev.key === "Enter") {
-            sendMessageToOdoo(chatInput.value);
-        }
-    });
-});
-</script>
 
 </html>
