@@ -9,37 +9,40 @@ body {
     flex-direction: column; /* Stellt sicher, dass der Footer am unteren Ende ist */
 }
 
+
 /* Header */
 header {
-    position: relative; /* Ermöglicht es, dass das Logo relativ zum Header positioniert wird */
-    display: flex; /* Verwendet Flexbox, um die Elemente im Header zu organisieren */
-    justify-content: center; /* Zentriert den Text horizontal im Header */
-    align-items: center; /* Zentriert den Text vertikal im Header */
-    color: #005e3f; /* Setzt die Textfarbe */
-    text-align: center; /* Zentriert den Text innerhalb des Containers */
-    padding: 10px 20px; /* Fügt dem Header etwas Innenabstand hinzu */
+    position: relative; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    color: #005e3f; 
+    text-align: center; 
+    padding: 10px 20px; 
     
-    /* ÄNDERUNG: min-height statt height, damit der Header auf 0 kollabieren kann */
     min-height: 100px; 
     max-height: 200px;
-    overflow: hidden;
-    z-index: 1000; /* Damit der Header über dem Content bleibt */
+    
+    /* WICHTIG: Verhindert, dass Text/Logo beim Verkleinern unten herausschauen */
+    overflow: hidden; 
+    z-index: 1000; 
     opacity: 1;
 
-    /* KORREKTUR: Alle Animationen in einer einzigen Zeile zusammengefasst */
-    transition: max-height 0.6s ease-in-out, 
-                min-height 0.6s ease-in-out, 
-                padding 0.6s ease-in-out, 
+    /* Fließender Übergang für alle Höhenänderungen */
+    transition: max-height 0.5s ease-in-out, 
+                min-height 0.5s ease-in-out, 
+                padding 0.5s ease-in-out, 
                 opacity 0.4s ease-in-out;
 }
 
 /* Diese Klasse wird per JavaScript hinzugefügt */
 header.hidden {
   max-height: 0 !important;
-  min-height: 0 !important; /* Setzt auch die Mindesthöhe auf 0 */
+  min-height: 0 !important; /* Erzwingt das Kollabieren auf 0px */
   padding-top: 0 !important;
   padding-bottom: 0 !important;
   opacity: 0;
+  pointer-events: none; /* Verhindert Interaktionen im ausgeblendeten Zustand */
 }
 
 .cookie-banner {
@@ -98,6 +101,8 @@ section {
         max-width: 200px;
         font-size: 16px;
         box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        font-family: 'Courier New', Courier, monospace; /* Setzt die Schriftart auf 'Courier New' */
+
       }
 
       /* Der "Pfeil" der Sprechblase */
@@ -175,43 +180,6 @@ margin-top: 150px;
 img:not(.profilbild):hover {
     animation: shake 0.5s;
     animation-iteration-count: infinite;
-}
-
-/* Definiert die Schüttel-Animation */
-@keyframes shake {
-    0% { 
-        transform: translateY(-50%) translate(1px, 1px) rotate(0deg); /* Anfangszustand */
-    }
-    10% { 
-        transform: translateY(-50%) translate(-1px, -2px) rotate(-1deg); /* Schütteln */
-    }
-    20% { 
-        transform: translateY(-50%) translate(-3px, 0px) rotate(1deg); /* Schütteln */
-    }
-    30% { 
-        transform: translateY(-50%) translate(3px, 2px) rotate(0deg); /* Schütteln */
-    }
-    40% { 
-        transform: translateY(-50%) translate(1px, -1px) rotate(1deg); /* Schütteln */
-    }
-    50% { 
-        transform: translateY(-50%) translate(-1px, 2px) rotate(-1deg); /* Schütteln */
-    }
-    60% { 
-        transform: translateY(-50%) translate(-3px, 1px) rotate(0deg); /* Schütteln */
-    }
-    70% { 
-        transform: translateY(-50%) translate(3px, 1px) rotate(-1deg); /* Schütteln */
-    }
-    80% { 
-        transform: translateY(-50%) translate(-1px, -1px) rotate(1deg); /* Schütteln */
-    }
-    90% { 
-        transform: translateY(-50%) translate(1px, 2px) rotate(0deg); /* Schütteln */
-    }
-    100% { 
-        transform: translateY(-50%) translate(1px, -2px) rotate(-1deg); /* Endzustand */
-    }
 }
 
 /* Navigation */
@@ -638,8 +606,5 @@ footer {
     padding: 0 !important;
     pointer-events: none !important;
 }
-
-
-
 
 
