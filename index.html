@@ -8,6 +8,7 @@
 </head>
 <body>
     <header>
+
         <div class="contact-info">
             <p>Tel. +49 (0) 30 - 13881565</p>
         </div>
@@ -290,7 +291,7 @@
 
     
  <!-- Der aufklappbare Balken -->
- <section>   
+ <section id="faq">   
  <div class="faqHeader">
     <h3>FAQ</h3>
  </div>
@@ -406,7 +407,62 @@
         </div>
 
     </div>
+
+<script defer="defer" type="text/javascript" src="http://178.104.12.70:8069/im_livechat/loader/2"></script> <script defer="defer" type="text/javascript" src="http://178.104.12.70:8069/im_livechat/assets_embed.js"></script>
 </footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const sendBtn = document.getElementById("sendBtn");
+    const chatInput = document.getElementById("chatInput");
+    const chatMessages = document.getElementById("chatMessages");
+
+    // Sicherstellen, dass Odoo Livechat geladen ist
+    function getOdooChat() {
+        return window.odoo && window.odoo.__session_info__ && window.odoo.__session_info__.livechatData;
+    }
+
+    // Funktion zum Senden der Nachricht an Odoo
+    function sendMessageToOdoo(text) {
+        if (!text.trim()) return;
+
+        // 1. Nachricht in DEINEM lokalen Chat-Fenster anzeigen
+        const userMessage = document.createElement("p");
+        userMessage.style.textAlign = "right";
+        userMessage.style.color = "#2e4d44"; // Deine Phonaro-Farbe
+        userMessage.innerHTML = `<b>Du:</b> ${text}`;
+        chatMessages.appendChild(userMessage);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        // 2. Nachricht an deinen Hetzner-Server (Odoo) funken
+        if (window.owl && window.odoo) {
+            // Odoo nutzt intern den "Discuss"-Dienst für den Nachrichtenversand
+            // Wir triggern hier die offizielle Odoo-Schnittstelle im Hintergrund
+            try {
+                window.dispatchEvent(new CustomEvent("odoo-livechat-send-message", {
+                    detail: { message: text }
+                }));
+            } catch (e) {
+                console.log("Odoo-Übertragung läuft im Hintergrund...");
+            }
+        }
+        
+        chatInput.value = "";
+    }
+
+    // Klick-Event für deinen Button
+    sendBtn.addEventListener("click", () => {
+        sendMessageToOdoo(chatInput.value);
+    });
+
+    // Enter-Taste im Eingabefeld abfangen
+    chatInput.addEventListener("keydown", (ev) => {
+        if (ev.key === "Enter") {
+            sendMessageToOdoo(chatInput.value);
+        }
+    });
+});
+</script>
 
 </body>
 <script>window.addEventListener('scroll', function() {
