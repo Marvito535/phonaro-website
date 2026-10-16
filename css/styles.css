@@ -446,51 +446,6 @@ footer {
 
 }
 
-.chat-window {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 300px;
-    height: 400px;
-    background-color: #005e3f;
-    color: #EAEAEA;
-    border: 3px solid black;
-    display: none; /* unsichtbar, bis Adler geklickt wird */
-    flex-direction: column;
-    font-family: monospace;
-    z-index: 1000;
-}
-
-.chat-header {
-    display: flex;
-    justify-content: space-between;
-    padding: 5px 10px;
-    border-bottom: 2px solid #EAEAEA;
-    font-weight: bold;
-}
-
-.chat-messages {
-    flex: 1;
-    padding: 10px;
-    overflow-y: auto;
-}
-
-#chatInput {
-    width: calc(100% - 60px);
-    padding: 5px;
-    background-color: #777777;
-    color: #EAEAEA;
-    border: 1px solid black;
-}
-
-#sendBtn {
-    width: 60px;
-    background-color: #A52A2A;
-    color: #EAEAEA;
-    border: none;
-    cursor: pointer;
-}
-
 /* --- Sektion für das Gratis-Testpaket (Jetzt als eine große, geschlossene weiße Box) --- */
 .freeTrialSection {
     max-width: 800px;

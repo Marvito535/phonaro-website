@@ -22,7 +22,7 @@
         <!-- Technischer Link für die direkte Aktivierung deines deutschen Support-Chats -->
         <a href="https://wa.me/493013881565" class="whatsapp-float" target="_blank" rel="noopener noreferrer" title="Support per WhatsApp">
         <img src="images/whatsapp.png" alt="WhatsApp">
-</a>
+        </a>
     </header>
 
     <!-- DSGVO Cookie Banner -->
@@ -33,7 +33,7 @@
         
         <div class="cookie-options">
             <label>
-                <input type="checkbox" id="cookie-essential" checked disabled> Esenziell (Website-Funktion)
+                <input type="checkbox" id="cookie-essential" checked disabled> Essenziell (Website-Funktion)
             </label>
             <label>
                 <input type="checkbox" id="cookie-payment"> Zahlungsabwicklung (PayPal & Stripe)
@@ -46,20 +46,6 @@
         </div>
     </div>
 </div>
-
-    <!-- Chatfenster -->
-<div id="chatWindow" class="chat-window">
-    <div class="chat-header">
-        <span>Live Support</span>
-        <button id="closeChat">X</button>
-    </div>
-    <div class="chat-messages" id="chatMessages">
-        <p>Hallo! Wie kann ich helfen?</p>
-    </div>
-    <input type="text" id="chatInput" placeholder="Nachricht schreiben...">
-    <button id="sendBtn">Senden</button>
-</div>
-
     <nav>
         <a href="#vorstellung">Vorstellung</a>
         <a href="#preise">Preise</a>
@@ -410,8 +396,8 @@
 
 <script defer="defer" type="text/javascript" src="http://178.104.12.70:8069/im_livechat/loader/2"></script> <script defer="defer" type="text/javascript" src="http://178.104.12.70:8069/im_livechat/assets_embed.js"></script>
 </footer>
-
-    <!-- Die offiziellen Odoo-Skripte (Laden die Verbindung zu deinem Hetzner-Server) -->
+</body>
+<!-- Die offiziellen Odoo-Skripte (Laden die Verbindung zu deinem Hetzner-Server) -->
     <script type="text/javascript">
         if (!window.odoo) { window.odoo = {}; }
         odoo.__session_info__ = { websocket_worker_version: "18.0-7" };
@@ -468,6 +454,58 @@
         }
     });
     </script>
+
+    <script>
+   // cookie banner
+document.addEventListener("DOMContentLoaded", function () {
+    const banner = document.getElementById("cookie-banner");
+    const btnAcceptAll = document.getElementById("btn-accept-all");
+    const btnAcceptSelected = document.getElementById("btn-accept-selected");
+    const checkboxPayment = document.getElementById("cookie-payment");
+
+    // 1. Prüfen, ob bereits eine Entscheidung getroffen wurde
+    if (!localStorage.getItem("cookieConsent")) {
+        banner.style.display = "block"; // Banner anzeigen
+    }
+
+    // 2. "Alle akzeptieren"-Klick
+    btnAcceptAll.addEventListener("click", function () {
+        const consent = {
+            essential: true,
+            payment: true,
+            timestamp: new Date().toISOString()
+        };
+        localStorage.setItem("cookieConsent", JSON.stringify(consent));
+        banner.style.display = "none";
+        
+        // Hier kannst du Skripte laden (z.B. PayPal/Stripe-initialisierung)
+        triggerConsentActions(consent);
+    });
+
+    // 3. "Auswahl speichern"-Klick
+    btnAcceptSelected.addEventListener("click", function () {
+        const consent = {
+            essential: true,
+            payment: checkboxPayment.checked,
+            timestamp: new Date().toISOString()
+        };
+        localStorage.setItem("cookieConsent", JSON.stringify(consent));
+        banner.style.display = "none";
+
+        triggerConsentActions(consent);
+    });
+
+    // Funktion zum Ausführen von Aktionen basierend auf der Einwilligung
+    function triggerConsentActions(consent) {
+        if (consent.payment) {
+            console.log("Zahlungsabwicklung (PayPal & Stripe) erlaubt.");
+            // Lade hier z.B. Zahlungs-SDKs nach
+        } else {
+            console.log("Zahlungsabwicklung abgelehnt.");
+        }
+    }
+});
+</script>
 </body>
 
 <script>window.addEventListener('scroll', function() {
@@ -593,4 +631,5 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 </script>
+
 </html>
