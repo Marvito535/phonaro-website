@@ -546,73 +546,46 @@ fetch('./posts/pc-beschleunigen.html')
 </script>
 
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-    const banner = document.getElementById('cookie-banner');
-    const btnAcceptAll = document.getElementById('btn-accept-all');
-    const btnAcceptSelected = document.getElementById('btn-accept-selected');
-    const paymentCheckbox = document.getElementById('cookie-payment');
+document.addEventListener("DOMContentLoaded", () => {
+    const sendBtn = document.getElementById("sendBtn");
+    const chatInput = document.getElementById("chatInput");
+    const chatMessages = document.getElementById("chatMessages");
 
-    // Prüfen, ob bereits eine Entscheidung getroffen wurde
-    const consent = localStorage.getItem('cookieConsent');
+    function sendMessageToOdoo(text) {
+        if (!text.trim()) return;
 
-    if (!consent) {
-        if (banner) banner.style.display = 'block';
-    } else {
-        try {
-            const consentData = JSON.parse(consent);
-            if (consentData && consentData.payment === true) {
-                loadPaymentScripts();
-            }
-        } catch (e) {
-            console.error("Fehler beim Parsen der Cookie-Einwilligung:", e);
-            if (banner) banner.style.display = 'block';
-        }
-    }
+        // 1. Zeige die Nachricht in DEINEM grünen Chatfenster an
+        const userMessage = document.createElement("p");
+        userMessage.style.textAlign = "right";
+        userMessage.style.margin = "5px 0";
+        userMessage.innerHTML = `<b>Du:</b> ${text}`;
+        chatMessages.appendChild(userMessage);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
 
-    // Funktion zum dynamischen Laden der Skripte (REPARIERT)
-    function loadPaymentScripts() {
-        console.log("Lade PayPal und Stripe...");
-
-        // 1. Stripe laden (Offizielle JS-Bibliotheks-URL v3)
-        if (!document.querySelector('script[src="https://stripe.com"]')) {
-            const stripeScript = document.createElement('script');
-            stripeScript.src = 'https://stripe.com';
-            stripeScript.async = true;
-            document.head.appendChild(stripeScript);
+        // 2. JETZT DIE DIREKTE BRÜCKE ZU ODOO SCHLAGEN:
+        // Wir prüfen, ob Odoos Livechat-Widget auf der Seite geladen ist
+        if (window.OdooLivechat && typeof window.OdooLivechat.send_message === "function") {
+            // Sendet den Text direkt an deinen Hetzner-Server im Hintergrund
+            window.OdooLivechat.send_message(text);
+        } else {
+            console.log("Odoo Livechat lädt noch oder die Verbindung zum Server steht noch nicht.");
         }
 
-        // 2. PayPal laden (Korrekte, fehlerfreie SDK-URL)
-        if (!document.querySelector('script[src*="sdk/js"]')) {
-            const paypalScript = document.createElement('script');
-            // HINWEIS: Ersetze 'sb' später durch deine echte PayPal-Live-Client-ID
-            paypalScript.src = 'https://paypal.com';
-            paypalScript.async = true;
-            document.head.appendChild(paypalScript);
+        // Feld leeren
+        chatInput.value = "";
+    }
+
+    // Klick-Event für den Button
+    sendBtn.addEventListener("click", () => {
+        sendMessageToOdoo(chatInput.value);
+    });
+
+    // Enter-Taste im Eingabefeld abfangen
+    chatInput.addEventListener("keydown", (ev) => {
+        if (ev.key === "Enter") {
+            sendMessageToOdoo(chatInput.value);
         }
-    }
-
-    // Event: Alle akzeptieren
-    if (btnAcceptAll) {
-        btnAcceptAll.addEventListener('click', function () {
-            const consentData = { essential: true, payment: true };
-            localStorage.setItem('cookieConsent', JSON.stringify(consentData));
-            if (banner) banner.style.display = 'none';
-            loadPaymentScripts();
-        });
-    }
-
-    // Event: Auswahl保存
-    if (btnAcceptSelected) {
-        btnAcceptSelected.addEventListener('click', function () {
-            const isPaymentAllowed = paymentCheckbox ? paymentCheckbox.checked : false;
-            const consentData = { essential: true, payment: isPaymentAllowed };
-            localStorage.setItem('cookieConsent', JSON.stringify(consentData));
-            if (banner) banner.style.display = 'none';
-            if (isPaymentAllowed) {
-                loadPaymentScripts();
-            }
-        });
-    }
+    });
 });
 </script>
 
