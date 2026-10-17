@@ -24,7 +24,7 @@ header {
     max-height: 200px;
     
     /* WICHTIG: Verhindert, dass Text/Logo beim Verkleinern unten herausschauen */
-    overflow: hidden; 
+    overflow: visible; 
     z-index: 1000; 
     opacity: 1;
 
