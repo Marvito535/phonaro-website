@@ -571,23 +571,29 @@ img:not(.profilbild):hover {
 /* ==========================================================================
    MOBILE OPTIMIERUNG (Greift nur auf Smartphones / Bildern < 900px)
    ========================================================================== */
+/* ==========================================================================
+   MOBILE OPTIMIERUNG (Greift nur auf Smartphones / Bildern < 900px)
+   ========================================================================== */
 @media (max-width: 900px) {
+    /* WhatsApp-Symbol im Handy-Bereich ausblenden */
+    .whatsapp-float {
+        display: none !important;
+    }
+
+    /* Adler / Logo im Header auf Mobilgeräten ausblenden */
+    .logo {
+        display: none !important;
+    }
+
+    /* Telefonnummer / Kontaktinfo im Header auf Mobilgeräten ausblenden */
+    .contact-info {
+        display: none !important;
+    }
+
     /* Header Elemente untereinander anordnen */
     header {
         flex-direction: column;
         padding: 15px 10px;
-    }
-
-    .contact-info {
-        position: static;
-        margin-bottom: 10px;
-    }
-
-    .logo {
-        position: static;
-        transform: none;
-        margin: 10px auto;
-        height: 70px;
     }
 
     .speech-bubble {
