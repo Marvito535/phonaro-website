@@ -1,16 +1,19 @@
-/* Allgemeine Styles */
+/* ==========================================
+   Allgemeine Styles
+   ========================================== */
 body {
-    font-family: Arial, sans-serif; /* Setzt die Schriftart auf Arial oder sans-serif als Fallback */
-    height:100%;
-    margin: 0; /* Entfernt standardmäßige Ränder des Browsers */
-    padding: 0; /* Entfernt standardmäßige Auffüllung des Browsers */
-    background-color: #FFFFFF ; /* Setzt den Hintergrund des gesamten Dokuments auf eine blaue Farbe */
+    font-family: Arial, sans-serif;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #FFFFFF;
     display: flex;
-    flex-direction: column; /* Stellt sicher, dass der Footer am unteren Ende ist */
+    flex-direction: column;
 }
 
-
-/* Header */
+/* ==========================================
+   Header
+   ========================================== */
 header {
     position: relative; 
     display: flex; 
@@ -19,183 +22,87 @@ header {
     color: #005e3f; 
     text-align: center; 
     padding: 10px 20px; 
-    
     min-height: 100px; 
     max-height: 200px;
-    
-    /* WICHTIG: Verhindert, dass Text/Logo beim Verkleinern unten herausschauen */
     overflow: visible; 
     z-index: 1000; 
     opacity: 1;
-
-    /* Fließender Übergang für alle Höhenänderungen */
     transition: max-height 0.5s ease-in-out, 
                 min-height 0.5s ease-in-out, 
                 padding 0.5s ease-in-out, 
                 opacity 0.4s ease-in-out;
 }
 
-/* Diese Klasse wird per JavaScript hinzugefügt */
 header.hidden {
-  max-height: 0 !important;
-  min-height: 0 !important; /* Erzwingt das Kollabieren auf 0px */
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-  opacity: 0;
-  pointer-events: none; /* Verhindert Interaktionen im ausgeblendeten Zustand */
+    max-height: 0 !important;
+    min-height: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    opacity: 0;
+    pointer-events: none;
 }
-
-.cookie-banner {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    right: 20px;
-    max-width: 500px;
-    background: #ffffff;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-    border-radius: 8px;
-    padding: 20px;
-    z-index: 9999;
-    font-family: sans-serif;
-    color: #333;
-}
-.cookie-content h3 { margin-top: 0; font-size: 18px; }
-.cookie-content p { font-size: 14px; line-height: 1.4; color: #666; }
-.cookie-options { margin: 15px 0; display: flex; flex-direction: column; gap: 8px; }
-.cookie-options label { font-size: 14px; cursor: pointer; }
-.cookie-buttons { display: flex; gap: 10px; margin-top: 15px; }
-.btn { padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 14px; }
-.btn-primary { background: #0070ba; color: white; } /* PayPal Blau */
-.btn-secondary { background: #e3e8ee; color: #4f5b66; }
 
 .contact-info {
     position: absolute;
     left: 50px;
-    align-items: center;
 }
 
 header h1 {
-    margin: 0; /* Entfernt den Standard-Margin des h1-Elements */
-    font-size: 2.5rem; /* Setzt die Schriftgröße des Titels auf 2.5rem */
+    margin: 0;
+    font-size: 2.5rem;
 }
 
 section {
-    scroll-margin-top: 200px; /* Höhe Ihrer Navigation hier eintragen */
+    scroll-margin-top: 200px;
 }
 
 .logo {
-    position: absolute; /* Setzt das Logo absolut innerhalb des Headers */
-    right: 50px; /* Positioniert das Logo 50px vom rechten Rand des Headers entfernt */
-    top: 50%; /* Positioniert das Logo vertikal in der Mitte des Headers */
-    transform: translateY(-50%); /* Korrigiert die vertikale Position, um das Logo genau zu zentrieren */
-    height: 115px; /* Setzt die Höhe des Logos auf 115px */
-    transition: transform 0.3s ease; /* Für flüssige Übergänge */
-}
-    .speech-bubble {
-        position: absolute;
-        background:  #777777;
-        color: #EAEAEA;
-        padding: 10px 10px;
-        right: 170px;
-        border-radius: 10px;
-        max-width: 300px;
-        font-size: 16px;
-        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-        font-family: 'Courier New', Courier, monospace; /* Setzt die Schriftart auf 'Courier New' */
-
-      }
-
-      /* Der "Pfeil" der Sprechblase */
-      .speech-bubble::after {
-        content: "";
-        position: absolute;
-        top: 50%;  /* Mittig zur Blase */
-        right: -10px;  /* Position rechts außerhalb der Blase */
-        transform: translateY(-50%); /* Exakte vertikale Zentrierung */
-        
-        width: 0;
-        height: 0;
-        border-top: 10px solid transparent;
-        border-bottom: 10px solid transparent;
-        border-left: 10px solid #005e3f; /* Linke Grenze = gefärbter Pfeil */
-      }
-      
-
-.vollbild-div {
-    position: relative; /* Ermöglicht die Platzierung des Hintergrund-Overlays */
-    width: 100%; 
-    height: 100vh; 
-    padding: 60px; 
-    
-    /* Flexbox hier aktivieren, um den Text perfekt in der Mitte der Box zu zentrieren */
-    display: flex; 
-    flex-direction: column; 
-    justify-content: center; /* Zentriert vertikal */
-    align-items: center;     /* Zentriert horizontal */
-    margin-bottom: 50px;
+    position: absolute;
+    right: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 115px;
+    transition: transform 0.3s ease;
 }
 
-/* Dieser Teil blendet das Bild unabhängig vom Text ein */
-.vollbild-div::before {
+.speech-bubble {
+    position: absolute;
+    background: #777777;
+    color: #EAEAEA;
+    padding: 10px;
+    right: 170px;
+    border-radius: 10px;
+    max-width: 300px;
+    font-size: 16px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.speech-bubble::after {
     content: "";
     position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    z-index: -1; /* Schiebt das Bild hinter den Text */
-    
-    background-image: url('../images/Hintergrund-Telefon.jpg'); 
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    
-    filter: grayscale(100%);
-    opacity: 0.5; /* Macht NUR das Bild transparent, nicht den Text! */
+    top: 50%;
+    right: -10px;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid #005e3f;
 }
 
-.farbiger-text {
-    color: #005e3f; /* Dein sattes Dunkelgrün leuchtet jetzt richtig */
-    text-align: center; 
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); 
-    max-width: 800px; /* Verhindert, dass der Text auf großen Bildschirmen zu langgezogen wird */
-    margin-bottom: 700px;
-}
-
-.konto {
-text-decoration: none; /* Entfernt den Unterstrich */
-position: absolute;
-background-color: #005e3f; 
-margin-left: 800px;
-color: #EAEAEA;             /* Schriftfarbe */
-padding: 10px 20px;       /* Innenabstand */
-border: none;             /* Rahmen entfernen */
-border-radius: 20px;       /* Abgerundete Ecken */
-cursor: pointer;          /* Zeiger-Maussymbol */
-font-family: Arial, sans-serif;
-font-size: 1.5rem;
-margin-top: 150px;
-
-}
-
-/* Hover-Effekt für Bilder */
-/* Hover-Effekt für alle Bilder, außer das mit der Klasse "profilbild" */
-img:not(.profilbild):hover {
-    animation: shake 0.5s;
-    animation-iteration-count: infinite;
-}
-
-/* Navigation */
+/* ==========================================
+   Navigation
+   ========================================== */
 nav {
-    display: flex; /* Verwendet Flexbox für die Navigation */
-    justify-content: center; /* Zentriert die Navigationslinks horizontal */
-    background-color: #005e3f; /* Setzt den Hintergrund der Navigation */
+    display: flex;
+    justify-content: center;
+    background-color: #005e3f;
     margin-bottom: 20px;
-
-    /* Wichtig für die Animation */
-    min-height: 40px; /* Passe dies an die normale Höhe deiner Nav-Leiste an */
+    min-height: 40px;
     max-height: 150px;
     overflow: hidden;
     opacity: 1;
-    
-    /* Die flüssige Animation (inklusive Margin) */
     transition: max-height 0.6s ease-in-out, 
                 min-height 0.6s ease-in-out, 
                 padding 0.6s ease-in-out, 
@@ -203,79 +110,129 @@ nav {
                 opacity 0.4s ease-in-out;
 }
 
-/* KORREKTUR: Kommentar-Syntax repariert und margin-bottom auf 0 gesetzt */
 nav.hidden {
     max-height: 0 !important;
     min-height: 0 !important;
     padding-top: 0 !important;
     padding-bottom: 0 !important;
-    margin-bottom: 0 !important; /* Verhindert eine leere Lücke nach dem Ausblenden */
+    margin-bottom: 0 !important;
     opacity: 0;
 }
 
 nav a {
-    color: #EAEAEA; /* Setzt die Textfarbe der Links auf weiß */
-    padding: 14px 20px; /* Fügt den Links Innenabstände hinzu (14px oben und unten, 20px links und rechts) */
-    text-decoration: none; /* Entfernt die Unterstreichung von Links */
-    text-align: center; /* Zentriert den Text innerhalb des Links */
+    color: #EAEAEA;
+    padding: 14px 20px;
+    text-decoration: none;
+    text-align: center;
 }
 
 nav a:hover {
-    background-color: #50C878; /* Setzt den Hintergrund auf Grau, wenn der Benutzer mit der Maus über den Link fährt */
+    background-color: #50C878;
 }
 
+/* ==========================================
+   Hero-Bereich (Vollbild-Div)
+   ========================================== */
+.vollbild-div {
+    position: relative;
+    width: 100%; 
+    height: 100vh; 
+    padding: 60px; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+    box-sizing: border-box;
+}
+
+.vollbild-div::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -1;
+    background-image: url('../images/Hintergrund-Telefon.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: grayscale(100%);
+    opacity: 0.5;
+}
+
+.farbiger-text {
+    color: #005e3f;
+    text-align: center; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); 
+    max-width: 800px;
+    margin-bottom: 700px;
+}
+
+.konto {
+    text-decoration: none;
+    position: absolute;
+    background-color: #005e3f; 
+    margin-left: 800px;
+    color: #EAEAEA;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    font-size: 1.5rem;
+    margin-top: 150px;
+}
+
+/* ==========================================
+   Video & Kommentare Layout
+   ========================================== */
 .video-layout-container {
     display: flex;
-    gap: 20px; /* Abstand zwischen Video und Kommentaren */
+    gap: 20px;
     margin: 0 auto;
     padding: 20px;
     font-family: Arial, sans-serif;
     width: 80%;
+    box-sizing: border-box;
 }
 
-/* Das Video nimmt 70% der Breite ein */
 .video-box {
     flex: 7;
 }
 
-/* Macht das YouTube-Video responsiv (16:9) */
 .video-wrapper {
     display: flex;
-    justify-content: center; /* Zentriert das Video horizontal */
-    align-items: center; /* Zentriert das Video vertikal */
-    width: 100%; /* Nutzt die volle Breite der Website */
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 .video-wrapper iframe {
-    width: 100%; /* Das Video füllt den Container komplett aus */
-    max-width: 100%; /* Verhindert, dass das Video über den Bildschirmrand hinausragt */
-    border: 20px solid #005e3f; /* Erstellt einen soliden grünen Rahmen */
-    box-sizing: border-box; /* Sorgt dafür, dass der Rahmen die Videogröße nicht verzerrt */
+    width: 100%;
+    max-width: 100%;
+    border: 20px solid #005e3f;
+    box-sizing: border-box;
     filter: grayscale(50%);
 }
 
-/* Die Kommentare nehmen 30% der Breite ein */
 .comments-box {
     color: #EAEAEA;
     flex: 3;
     padding: 15px;
-    max-height: 460px; /* Begrenzt die Höhe */
-    overflow-y: scroll; /* WICHTIG: Erzwingt, dass das Scroll-System permanent aktiv ist */
-    background-color: #777777; /* Setzt den Hintergrund der Retro-Monitore auf grau */
-    border: 8px solid #005e3f; /* Fügt einen grünen Rand hinzu */
-    border-radius: 15px; /* Abgerundete Ecken */
-    box-shadow: 0 10px 15px #87AFC7; /* Fügt einen Schatteneffekt hinzu */
-    font-family: 'Courier New', Courier, monospace; /* Setzt die Schriftart auf 'Courier New' */
-    
-    /* Für Firefox: Aktiviert und färbt den permanenten Balken */
+    max-height: 460px;
+    overflow-y: scroll;
+    background-color: #777777;
+    border: 8px solid #005e3f;
+    border-radius: 15px;
+    box-shadow: 0 10px 15px #87AFC7;
+    font-family: 'Courier New', Courier, monospace;
     scrollbar-width: auto; 
     scrollbar-color: #c0c0c0 #e0e0e0;
+    box-sizing: border-box;
 }
 
-/* GRÜNE TRENNLINIE ZWISCHEN DEN KOMMENTAREN */
 .comment {
     margin-bottom: 15px;
-    border-bottom: 1px solid #005e3f; /* Die grüne Linie */
+    border-bottom: 1px solid #005e3f;
     padding-bottom: 10px;
 }
 
@@ -285,15 +242,12 @@ nav a:hover {
     color: #EAEAEA;
 }
 
-/* =======================================================
-   RETRO SCROLLBALKEN (Für Chrome, Safari, Edge, Opera)
-   ======================================================= */
+/* Retro Scrollbalken */
 .comments-box::-webkit-scrollbar {
-    width: 20px; /* Breite des klassischen Balkens */
+    width: 20px;
     display: block !important;
 }
 
-/* Der Hintergrund des Scrollbalkens (Schachbrett-Muster-Effekt) */
 .comments-box::-webkit-scrollbar-track {
     background-color: #e0e0e0;
     background-image: linear-gradient(45deg, #c0c0c0 25%, transparent 25%, transparent 75%, #c0c0c0 75%, #c0c0c0),
@@ -302,128 +256,67 @@ nav a:hover {
     background-position: 0 0, 2px 2px;
 }
 
-/* Der scrollbare Block (Klassisches graues 3D-Design) */
 .comments-box::-webkit-scrollbar-thumb {
     background-color: #c0c0c0;
     border: 2px solid;
-    border-color: #fff #808080 #808080 #fff; /* 3D-Effekt nach außen */
+    border-color: #fff #808080 #808080 #fff;
 }
 
-/* Effekt beim Drücken auf den Balken */
 .comments-box::-webkit-scrollbar-thumb:active {
     background-color: #c0c0c0;
-    border-color: #808080 #fff #fff #808080; /* Drückt den Button optisch ein */
+    border-color: #808080 #fff #fff #808080;
 }
 
-/* Für kleinere Bildschirme (z.B. Smartphones): Video und Kommentare untereinander */
-@media (max-width: 768px) {
-    .video-layout-container {
-        flex-direction: column;
-    }
-    .video-box, .comments-box {
-        flex: none;
-        width: 100%;
-    }
-}
- 
+/* ==========================================
+   Preistabelle & Call to Action
+   ========================================== */
 .callToAction h2,
-.callToAction p
-{
+.callToAction p {
     color: #005e3f;
     text-align: center;
     margin: 40px;
 }
 
+.tableContainer {
+    width: 100%;
+}
+
 table {
     width: 80%;
     color: #EAEAEA;
-    background-color:  #777777; 
+    background-color: #777777; 
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 20px;
-    border: 8px solid #005e3f; /* Fügt einen gelben Rand hinzu */
-    border-radius: 15px; /* Abgerundete Ecken */
-    box-shadow: 0 10px 15px #87AFC7; /* Fügt einen Schatteneffekt hinzu */
-    border-spacing: 0; /* Verhindert einen Abstand zwischen den Zellen */
-    font-family: 'Courier New', Courier, monospace; /* Setzt die Schriftart auf 'Courier New' für Retro-Optik */
+    border: 8px solid #005e3f;
+    border-radius: 15px;
+    box-shadow: 0 10px 15px #87AFC7;
+    border-spacing: 0;
+    font-family: 'Courier New', Courier, monospace;
 }
+
 th, td {
     border: 1px solid #005e3f;
     padding: 8px;
     text-align: left;
 }
+
 th {
-    background-color:  #777777; /* Kopfzeilen etwas dunkler */
+    background-color: #777777;
 }
 
-/* Footer */
-footer {
-    background-color:#005e3f; /* Setzt den Hintergrund des Footers auf Gelb */
-    color: #EAEAEA; /* Setzt die Textfarbe im Footer auf Weiß */
-    text-align: center; /* Zentriert den Text im Footer */
-    padding: 10px 0; /* Fügt dem Footer Innenabstände hinzu */
-    /*position: fixed; /* Macht den Footer fest, damit er immer unten bleibt */
-    width: 100%; /* Stellt sicher, dass der Footer die gesamte Breite nutzt */
-    bottom: 0; /* Positioniert den Footer am unteren Rand des Bildschirms */
-    margin-top: 50px; /* Fügt Abstand zum letzten Inhaltselement hinzu */
-}
-
-/* Responsiveness */
-@media (max-width: 1300px) {
-    header {
-        flex-direction: column; /* Stellt sicher, dass der Header auf kleinen Bildschirmen vertikal ausgerichtet wird */
-        text-align: center; /* Setzt den Text im Header auf zentriert */
-    }
-
-    .logo {
-        position: static; /* Stellt sicher, dass das Logo auf kleineren Bildschirmen nicht mehr absolut positioniert ist */
-        margin-top: 20px; /* Fügt oben einen Abstand zum Logo hinzu */
-        height: 80px; /* Reduziert die Höhe des Logos */
-    }
-
-    .speech-bubble {
-        position: static; /* Stellt sicher, dass das Logo auf kleineren Bildschirmen nicht mehr absolut positioniert ist */
-        margin-bottom: 20px; /* Fügt oben einen Abstand zum Logo hinzu */
-        height: 20px; /* Reduziert die Höhe des Logos */
-        font-size: 12px;
-    }
-
-    nav {
-        flex-direction: column; /* Ordnet die Navigationselemente vertikal an */
-    }
-
-    nav a {
-        padding: 10px; /* Fügt den Links kleinere Innenabstände hinzu */
-        width: 100px; /* Setzt eine feste Breite für die Links */
-        text-align: center; /* Zentriert den Text innerhalb der Links */
-    }
-
-    .main-content {
-        flex-direction: row; /* Stellt sicher, dass die Retro-Monitore nebeneinander angezeigt werden */
-        justify-content: center; /* Zentriert die Retro-Monitore horizontal */
-        flex-wrap: wrap; /* Wenn nötig, wird der Inhalt umgebrochen */
-    }
-
-    .retro-monitor {
-        width: 200px; /* Setzt eine feste Breite für die Retro-Monitore */
-    }
-
-    .footer {
-        position: static; /* Stellt sicher, dass der Footer nicht fixiert wird, sondern am Ende der Seite erscheint */
-    }
-
-}
-
-/* --- Sektion für das Gratis-Testpaket (Jetzt als eine große, geschlossene weiße Box) --- */
+/* ==========================================
+   Formulare & Onboarding
+   ========================================== */
 .freeTrialSection {
     max-width: 800px;
     margin: 60px auto;
-    padding: 40px 30px;                /* Leicht erhöht für bessere Symmetrie */
+    padding: 40px 30px;
     font-family: sans-serif;
-    background-color: #ffffff;         /* Weißer Hintergrund für das gesamte Feld inkl. Button */
-    border: 2px solid #e0e6e4;         /* Der elegante Rahmen umschließt jetzt alles */
+    background-color: #ffffff;
+    border: 2px solid #e0e6e4;
     border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Schicker, dezenter Schatten um die ganze Box */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     box-sizing: border-box;
 }
 
@@ -446,38 +339,43 @@ footer {
     margin: 0 auto;
 }
 
-/* --- Das Onboarding-Formular --- */
-.onboardingForm fieldset {
-    border: 1px solid #c8d4d0;         /* Etwas feinerer Innenrahmen für die Schritte */
+fieldset {
+    border: 1px solid #c8d4d0;
     border-radius: 8px;
     padding: 25px;
     margin-bottom: 30px;
-    background-color: #fafbfc;         /* Leichtes Grau-Blau für die Schritte, hebt sich edel ab */
+    background-color: #fafbfc;
 }
 
-.onboardingForm legend {
+legend {
     font-weight: bold;
     color: #005e3f;
     font-size: 1.15rem;
     padding: 0 10px;
-    background-color: transparent;     /* Passt sich fließend an */
 }
 
-.onboardingForm p {
-    margin: 0 0 8px 0;
-    color: #005e3f;
-    font-size: 1rem;
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="url"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
-/* ==========================================================================
-   Sektion: Erstgespräch & Terminvereinbarung (#termin)
-   ========================================================================== */
-
+/* ==========================================
+   Termin-Sektion (#termin)
+   ========================================== */
 #termin {
     max-width: 800px;
     margin: 60px auto;
     padding: 40px 20px;
-    background-color: #f7f9f8; /* Sehr helles, edles Grau-Grün */
+    background-color: #f7f9f8;
     border: 1px solid #e0e6e4;
     border-radius: 12px;
     text-align: center;
@@ -485,7 +383,7 @@ footer {
 }
 
 #termin h2 {
-    color: #005e3f; /* Dein originales Phonaro-Dunkelgrün */
+    color: #005e3f;
     font-size: 2rem;
     margin-top: 10px;
     margin-bottom: 15px;
@@ -499,10 +397,9 @@ footer {
     font-size: 1.05rem;
 }
 
-/* Der edle B2B-Call-to-Action-Button */
 #termin a {
     display: inline-block;
-    background-color: #2e4d44; /* Dein zweiter Phonaro-Grünton */
+    background-color: #2e4d44;
     color: #ffffff !important;
     padding: 14px 35px;
     border-radius: 6px;
@@ -513,75 +410,125 @@ footer {
     transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
 }
 
-/* Sanftes Vergrößern und Farbwechsel beim Drüberfahren (Hover) */
 #termin a:hover {
-    background-color: #1a332c; /* Dunklerer Ton beim Hovern */
+    background-color: #1a332c;
     transform: translateY(-2px);
     box-shadow: 0 6px 15px rgba(26, 51, 44, 0.3);
 }
 
-
-
+/* ==========================================
+   FAQ & Details
+   ========================================== */
 .faqHeader h3 {
-    font-family: 'Courier New', Courier, monospace; /* Setzt die Schriftart auf 'Courier New' */
-    color: #EAEAEA;;
+    font-family: 'Courier New', Courier, monospace;
+    color: #EAEAEA;
     font-size: 2rem;
     width: 80%;
     border: 1.5px solid #005e3f;
     background-color: #005e3f;
     margin: 0 auto;
     text-align: center;
+    box-sizing: border-box;
 }
-        /* Styling für den gesamten Balken */
-        details {
-            border: 1.5px solid #005e3f;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            width: 80%;
-            margin: 0 auto;
-            font-family: 'Courier New', Courier, monospace; /* Setzt die Schriftart auf 'Courier New' */
 
-        }
+details {
+    border: 1.5px solid #005e3f;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    width: 80%;
+    margin: 0 auto;
+    font-family: 'Courier New', Courier, monospace;
+}
 
-        /* Styling für den sichtbaren Header (den Balken) */
-        summary {
-            padding: 15px;
-            font-weight: bold;
-            background-color: #777777;
-            color: #EAEAEA;
-            cursor: pointer;
-            list-style: none; /* Entfernt den Standard-Pfeil in manchen Browsern */
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+summary {
+    padding: 15px;
+    font-weight: bold;
+    background-color: #777777;
+    color: #EAEAEA;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-        /* Kleiner visueller Indikator (Pfeil), der sich dreht */
-        summary::after {
-            content: '▼';
-            font-size: 0.8em;
-            transition: transform 0.3s ease;
-        }
+summary::after {
+    content: '▼';
+    font-size: 0.8em;
+    transition: transform 0.3s ease;
+}
 
-        /* Dreht den Pfeil um, wenn der Balken geöffnet ist */
-        details[open] summary::after {
-            transform: rotate(180deg);
-        }
+details[open] summary::after {
+    transform: rotate(180deg);
+}
 
-        /* Styling für den verborgenen Inhalt, der aufklappt */
-        .content {
-            padding: 15px;
-            background-color: #C7C7C9;
-            border-top: 1px solid #005e3f;
-            line-height: 1.5;
-        }
+.content {
+    padding: 15px;
+    background-color: #C7C7C9;
+    border-top: 1px solid #005e3f;
+    line-height: 1.5;
+}
 
+/* ==========================================
+   Footer
+   ========================================== */
+footer {
+    background-color: #005e3f;
+    color: #EAEAEA;
+    text-align: center;
+    padding: 20px 10px;
+    width: 100%;
+    bottom: 0;
+    margin-top: 50px;
+    box-sizing: border-box;
+}
 
-/* WhatsApp-Button - Bombenfest oben links fixiert */
+.footerGrid {
+    display: flex;
+    justify-content: space-around;
+    max-width: 1100px;
+    margin: 0 auto 20px auto;
+    text-align: left;
+    gap: 20px;
+}
+
+.footerColumn {
+    flex: 1;
+}
+
+/* ==========================================
+   Cookie Banner
+   ========================================== */
+.cookie-banner {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    max-width: 500px;
+    background: #ffffff;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    border-radius: 8px;
+    padding: 20px;
+    z-index: 9999;
+    font-family: sans-serif;
+    color: #333;
+}
+.cookie-content h3 { margin-top: 0; font-size: 18px; }
+.cookie-content p { font-size: 14px; line-height: 1.4; color: #666; }
+.cookie-options { margin: 15px 0; display: flex; flex-direction: column; gap: 8px; }
+.cookie-options label { font-size: 14px; cursor: pointer; }
+.cookie-buttons { display: flex; gap: 10px; margin-top: 15px; }
+.btn { padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 14px; }
+.btn-primary { background: #0070ba; color: white; }
+.btn-secondary { background: #e3e8ee; color: #4f5b66; }
+
+/* ==========================================
+   WhatsApp Floating Button
+   ========================================== */
 .whatsapp-float {
-    position: absolute !important; /* Fixed reißt das Element aus dem Header-Layout heraus */
-    top: 33px !important;       /* 20 Pixel Abstand zum oberen Bildschirmrand */
-    left: 5px !important;      /* 20 Pixel Abstand zum linken Bildschirmrand */
+    position: absolute !important;
+    top: 33px !important;
+    left: 5px !important;
     width: 55px !important;
     height: 55px !important;
     display: flex !important;
@@ -592,12 +539,10 @@ footer {
     cursor: pointer !important;
 }
 
-/* Geschmeidiger Vergrößerungs-Effekt beim Drüberfahren */
 .whatsapp-float:hover {
     transform: scale(1.1) !important;
 }
 
-/* Perfekte Größe für dein lokales WhatsApp-Bild */
 .whatsapp-float img {
     width: 60% !important;
     height: 60% !important;
@@ -607,4 +552,123 @@ footer {
     pointer-events: none !important;
 }
 
+/* Allgemeiner Hover-Effekt für Bilder */
+img:not(.profilbild):hover {
+    animation: shake 0.5s;
+    animation-iteration-count: infinite;
+}
 
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    20% { transform: translate(-1px, -2px) rotate(-1deg); }
+    40% { transform: translate(-3px, 0px) rotate(1deg); }
+    60% { transform: translate(3px, 2px) rotate(0deg); }
+    80% { transform: translate(1px, -1px) rotate(1deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+
+/* ==========================================================================
+   MOBILE OPTIMIERUNG (Greift nur auf Smartphones / Bildern < 900px)
+   ========================================================================== */
+@media (max-width: 900px) {
+    /* Header Elemente untereinander anordnen */
+    header {
+        flex-direction: column;
+        padding: 15px 10px;
+    }
+
+    .contact-info {
+        position: static;
+        margin-bottom: 10px;
+    }
+
+    .logo {
+        position: static;
+        transform: none;
+        margin: 10px auto;
+        height: 70px;
+    }
+
+    .speech-bubble {
+        position: static;
+        transform: none;
+        margin: 10px auto;
+        max-width: 90%;
+        font-size: 13px;
+    }
+    
+    .speech-bubble::after {
+        display: none; /* Pfeil auf Mobile ausblenden, da zentriert */
+    }
+
+    /* Navigation untereinander */
+    nav {
+        flex-direction: column;
+        max-height: none;
+    }
+
+    nav a {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px;
+    }
+
+    /* Hero-Sektion anpassen */
+    .vollbild-div {
+        height: auto;
+        padding: 40px 20px;
+    }
+
+    .farbiger-text {
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+    }
+
+    .konto {
+        position: static;
+        margin: 20px auto 0 auto;
+        display: inline-block;
+        font-size: 1.2rem;
+    }
+
+    /* Video & Kommentare untereinander stapeln */
+    .video-layout-container {
+        flex-direction: column;
+        width: 95%;
+        padding: 10px;
+    }
+
+    .video-box, .comments-box {
+        width: 100%;
+    }
+
+    .comments-box {
+        max-height: 300px;
+    }
+
+    /* Preistabelle mobil horizontal scrollbar machen */
+    table {
+        width: 95%;
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    /* Formulare & Boxen auf Handybreite bringen */
+    .freeTrialSection, 
+    #termin, 
+    .faqHeader h3, 
+    details {
+        width: 92%;
+        padding: 20px 15px;
+        margin: 30px auto;
+    }
+
+    /* Footer Spalten untereinander stapeln */
+    .footerGrid {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+}
