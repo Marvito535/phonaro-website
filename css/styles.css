@@ -62,7 +62,6 @@ section {
     top: 50%;
     transform: translateY(-50%);
     height: 115px;
-    transition: transform 0.3s ease;
 }
 
 .speech-bubble {
@@ -549,14 +548,7 @@ footer {
     display: block !important;
     margin: 0 !important;
     padding: 0 !important;
-    pointer-events: none !important;
-}
-
-/* Allgemeiner Hover-Effekt für Bilder */
-img:not(.profilbild):hover {
-    animation: shake 0.5s;
-    animation-iteration-count: infinite;
-}
+    pointer-events: none !important; }
 
 @keyframes shake {
     0% { transform: translate(1px, 1px) rotate(0deg); }
