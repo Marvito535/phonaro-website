@@ -1,6 +1,7 @@
 /* ==========================================
    Allgemeine Styles
    ========================================== */
+
 body {
     font-family: 'JetBrains Mono', monospace;
     line-height: 1.7;
@@ -71,9 +72,10 @@ header h1 {
     margin: 0;
     font-size: 2.5rem;
 }
-
-section {
-    scroll-margin-top: 200px;
+html {
+    scroll-behavior: smooth;
+    /* Verhindert, dass fixe Elemente den Anker verdecken / sorgt für einheitliches Offset */
+    scroll-padding-top: 200px; /* Passe den Wert (z.B. 100px - 140px) an die Höhe deines Headers/Nav an */
 }
 
 .logo {
@@ -494,7 +496,7 @@ footer {
     border-radius: 8px;
     padding: 20px;
     z-index: 9999;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: sans-serif;
     line-height: 1.7;
     color: #333;
 }
