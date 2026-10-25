@@ -552,6 +552,11 @@ footer {
    MOBILE OPTIMIERUNG (Greift nur auf Smartphones / Bildern < 900px)
    ========================================================================== */
 @media (max-width: 900px) {
+    /* Gilt jetzt EXKLUSIV auf dem Smartphone: 50px weniger Padding, scrollt dadurch weiter runter */
+    html {
+        scroll-padding-top: 150px; 
+    }
+
     .whatsapp-float {
         display: none !important;
     }
