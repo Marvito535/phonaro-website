@@ -557,11 +557,11 @@ footer {
     }
 
     /* Verhindert, dass der Header auf Handys verschwindet */
-    header.hidden {
+   header.hidden {
         max-height: 200px !important;
-        min-height: 80px !important;
-        padding-top: 15px !important;
-        padding-bottom: 15px !important;
+        min-height: 100px !important;
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
         opacity: 1 !important;
         pointer-events: auto !important;
     }
