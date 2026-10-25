@@ -559,7 +559,7 @@ footer {
     #faq,
     .freeTrialSection, 
     .video-layout-container {
-        scroll-margin-top: 50px; /* Passe den Wert an, falls es weiter/weniger weit runter scrollen soll */
+        scroll-margin-top: 30px; /* Passe den Wert an, falls es weiter/weniger weit runter scrollen soll */
     }
 
     .whatsapp-float {
