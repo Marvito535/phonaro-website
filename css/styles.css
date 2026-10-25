@@ -557,7 +557,7 @@ footer {
     #termin, 
     .freeTrialSection, 
     .video-layout-container {
-        scroll-margin-top: 80px; /* Hier kannst du den Wert anpassen (kleiner = scrollt weiter nach unten) */
+        scroll-margin-top: 50px; /* Hier kannst du den Wert anpassen (kleiner = scrollt weiter nach unten) */
     }
 
     .whatsapp-float {
