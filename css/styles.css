@@ -193,7 +193,7 @@ nav a:hover {
     max-width: 100%;
     border: 20px solid #005e3f;
     box-sizing: border-box;
-    filter: grayscale(50%);
+    filter: grayscale(0%);
 }
 
 .comments-box {
@@ -554,6 +554,20 @@ footer {
 @media (max-width: 900px) {
     .whatsapp-float {
         display: none !important;
+    }
+
+    @media (max-width: 900px) {
+    /* Verhindert, dass der Header auf Handys verschwindet */
+    header.hidden {
+        max-height: 200px !important;
+        min-height: 80px !important;
+        padding-top: 15px !important;
+        padding-bottom: 15px !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+    }
+
+    /* Rest deiner mobilen Anpassungen... */
     }
 
     .logo {
