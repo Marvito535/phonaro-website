@@ -552,20 +552,18 @@ footer {
    MOBILE OPTIMIERUNG (Greift nur auf Smartphones / Bildern < 900px)
    ========================================================================== */
 @media (max-width: 900px) {
-    /* Setze hier die ID oder Klasse deiner Ziel-Sektionen ein */
+    /* Ziel-Sektionen mit scroll-margin-top für den Anker-Sprung */
     #termin, 
     .freeTrialSection, 
     .video-layout-container {
-        scroll-margin-top: 80px; /* Reduziere diesen Wert, damit er 50px weiter nach unten scrollt */
+        scroll-margin-top: 80px; 
     }
-}
 
     .whatsapp-float {
         display: none !important;
     }
 
-   /* Erzwingt, dass der Header auf Handys NIEMALS verschwindet */
-    /* Header scrollt ganz normal mit der Seite mit, verschwindet aber nicht mehr */
+    /* Erzwingt, dass der Header auf Handys NIEMALS verschwindet */
     header,
     header.hidden {
         max-height: none !important;
@@ -577,7 +575,7 @@ footer {
         transform: none !important;
         display: flex !important;
         pointer-events: auto !important;
-        position: relative !important; /* Wichtig: Geändert von sticky zu relative */
+        position: relative !important;
         z-index: 1050 !important;
     }
 
@@ -654,13 +652,13 @@ footer {
         max-height: 300px;
     }
 
-   /* Blendet nur den echten Tabellenkopf (th) aus, lässt aber alle normalen Zeilen (Pakete) in Ruhe */
+    /* Blendet nur den echten Tabellenkopf (th) aus */
     thead, 
     tr th {
         display: none !important;
     }
 
-   /* Lässt die Tabelle und die Datenzeilen untereinander statt nebeneinander stapeln */
+    /* Lässt die Tabelle und die Datenzeilen untereinander stapeln */
     table, tbody, tr, td {
         display: block;
         width: 100%;
@@ -699,14 +697,16 @@ footer {
         margin: 30px auto;
     }
 
-    /* FAQ-Box: Breite und Abstand wie die anderen, aber kein Padding, damit das Grau bündig abschließt */
+    /* FAQ-Box */
     details {
         width: 92%;
         margin: 30px auto;
         padding: 0 !important;
     }
+
     .footerGrid {
         flex-direction: column;
         text-align: center;
         gap: 30px;
     }
+} /* <--- Das ist die einzig richtige, schließende Klammer für die Media-Query am Ende! */
