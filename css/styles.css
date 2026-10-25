@@ -552,12 +552,14 @@ footer {
    MOBILE OPTIMIERUNG (Greift nur auf Smartphones / Bildern < 900px)
    ========================================================================== */
 @media (max-width: 900px) {
-    /* Exakter Abstand für alle Anker-Ziele auf dem Smartphone */
+    /* Alle Anker-Ziele auf dem Smartphone mit exaktem Offset */
     #vorstellung,
-    #termin, 
+    #preise,
+    #termin,
+    #faq,
     .freeTrialSection, 
     .video-layout-container {
-        scroll-margin-top: 50px; /* Hier kannst du den Wert anpassen (kleiner = scrollt weiter nach unten) */
+        scroll-margin-top: 50px; /* Passe den Wert an, falls es weiter/weniger weit runter scrollen soll */
     }
 
     .whatsapp-float {
