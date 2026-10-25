@@ -556,21 +556,32 @@ footer {
         display: none !important;
     }
 
-    /* Verhindert, dass der Header auf Handys verschwindet */
-   header.hidden {
-        max-height: 200px !important;
-        min-height: 100px !important;
-        padding-top: 10px !important;
-        padding-bottom: 10px !important;
+   /* Erzwingt, dass der Header auf Handys NIEMALS verschwindet */
+    header,
+    header.hidden {
+        max-height: none !important;
+        min-height: 80px !important;
+        padding-top: 15px !important;
+        padding-bottom: 15px !important;
         opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        display: flex !important;
         pointer-events: auto !important;
+        position: sticky !important;
+        top: 0 !important;
+        z-index: 1050 !important;
     }
 
-    /* WICHTIG: Schützt auch die Navigation vor dem Verstecken auf Handys */
+    /* Erzwingt dasselbe für die Navigation */
+    nav,
     nav.hidden {
-        max-height: 150px !important;
+        max-height: none !important;
         min-height: 40px !important;
         opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        display: flex !important;
         overflow: visible !important;
         margin-bottom: 20px !important;
     }
