@@ -554,7 +554,7 @@ footer {
 @media (max-width: 900px) {
     /* Gilt jetzt EXKLUSIV auf dem Smartphone: 50px weniger Padding, scrollt dadurch weiter runter */
     html {
-        scroll-padding-top: 200px; 
+        scroll-padding-top: 300px; 
     }
 
     .whatsapp-float {
