@@ -685,14 +685,18 @@ footer {
     }
 
     .freeTrialSection, 
-    #termin, 
-    .faqHeader h3, 
-    details {
+    #termin {
         width: 92%;
         padding: 20px 15px;
         margin: 30px auto;
     }
 
+    /* FAQ-Box: Breite und Abstand wie die anderen, aber kein Padding, damit das Grau bündig abschließt */
+    details {
+        width: 92%;
+        margin: 30px auto;
+        padding: 0 !important;
+    }
     .footerGrid {
         flex-direction: column;
         text-align: center;
