@@ -552,10 +552,13 @@ footer {
    MOBILE OPTIMIERUNG (Greift nur auf Smartphones / Bildern < 900px)
    ========================================================================== */
 @media (max-width: 900px) {
-    /* Gilt jetzt EXKLUSIV auf dem Smartphone: 50px weniger Padding, scrollt dadurch weiter runter */
-    html {
-        scroll-padding-top: 20px; 
+    /* Setze hier die ID oder Klasse deiner Ziel-Sektionen ein */
+    #termin, 
+    .freeTrialSection, 
+    .video-layout-container {
+        scroll-margin-top: 80px; /* Reduziere diesen Wert, damit er 50px weiter nach unten scrollt */
     }
+}
 
     .whatsapp-float {
         display: none !important;
