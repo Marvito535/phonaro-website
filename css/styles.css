@@ -566,6 +566,15 @@ footer {
         pointer-events: auto !important;
     }
 
+    /* WICHTIG: Schützt auch die Navigation vor dem Verstecken auf Handys */
+    nav.hidden {
+        max-height: 150px !important;
+        min-height: 40px !important;
+        opacity: 1 !important;
+        overflow: visible !important;
+        margin-bottom: 20px !important;
+    }
+
     .logo {
         display: none !important;
     }
