@@ -557,6 +557,7 @@ footer {
     }
 
    /* Erzwingt, dass der Header auf Handys NIEMALS verschwindet */
+    /* Header scrollt ganz normal mit der Seite mit, verschwindet aber nicht mehr */
     header,
     header.hidden {
         max-height: none !important;
@@ -568,8 +569,7 @@ footer {
         transform: none !important;
         display: flex !important;
         pointer-events: auto !important;
-        position: sticky !important;
-        top: 0 !important;
+        position: relative !important; /* Wichtig: Geändert von sticky zu relative */
         z-index: 1050 !important;
     }
 
