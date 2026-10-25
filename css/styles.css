@@ -556,7 +556,6 @@ footer {
         display: none !important;
     }
 
-    @media (max-width: 900px) {
     /* Verhindert, dass der Header auf Handys verschwindet */
     header.hidden {
         max-height: 200px !important;
@@ -565,9 +564,6 @@ footer {
         padding-bottom: 15px !important;
         opacity: 1 !important;
         pointer-events: auto !important;
-    }
-
-    /* Rest deiner mobilen Anpassungen... */
     }
 
     .logo {
