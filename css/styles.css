@@ -646,14 +646,14 @@ footer {
         max-height: 300px;
     }
 
-    /* Blendet die erste Zeile / den Tabellenkopf auf dem Handy aus */
-    table tr:first-child,
-    thead {
+   /* Blendet nur den echten Tabellenkopf (th) aus, lässt aber alle normalen Zeilen (Pakete) in Ruhe */
+    thead, 
+    tr th {
         display: none !important;
     }
 
-   /* Lässt die Tabelle und alle Zeilen/Zellen untereinander statt nebeneinander stapeln */
-    table, thead, tbody, tr, th, td {
+   /* Lässt die Tabelle und die Datenzeilen untereinander statt nebeneinander stapeln */
+    table, tbody, tr, td {
         display: block;
         width: 100%;
         box-sizing: border-box;
@@ -666,8 +666,14 @@ footer {
         overflow-x: visible;
     }
 
+    tr {
+        margin-bottom: 15px;
+        border: 1px solid #005e3f;
+        border-radius: 8px;
+        background-color: #777777;
+    }
 
-    th, td {
+    td {
         text-align: left;
         padding: 10px;
         border: none;
