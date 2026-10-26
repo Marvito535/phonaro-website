@@ -552,16 +552,14 @@ footer {
    MOBILE OPTIMIERUNG (Greift nur auf Smartphones / Bildern < 900px)
    ========================================================================== */
 @media (max-width: 900px) {
-    #vorstellung,
-    #preise,
-    #termin,
-    #faq {
-        scroll-margin-top: 200px !important; /* Setze es testweise höher auf 100px */
+    html {
+        scroll-padding-top: 70px; /* Kleinerer Abstand für das Handy */
     }
 
     .whatsapp-float {
-        display: none !important;
+        display: none !important; /* Wird jetzt sauber nur auf dem Handy ausgeblendet */
     }
+
 
     /* Erzwingt, dass der Header auf Handys NIEMALS verschwindet */
     header,
