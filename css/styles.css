@@ -755,4 +755,5 @@ footer {
         text-align: center;
         gap: 30px;
     }
+
 } /* <--- Das ist die einzig richtige, schließende Klammer für die Media-Query am Ende! */

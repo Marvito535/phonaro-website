@@ -70,7 +70,8 @@
         </div>
     </div>
 </div>
-    <nav>
+
+<nav>
         <a href="#vorstellung">Vorstellung</a>
         <a href="#preise">Preise</a>
         <a href="#kontoanker">Onboarding</a>
@@ -78,7 +79,7 @@
         <a href="#faq">FAQ</a> 
         <a href="https://crm.phonaro.de/contactus">Kontakt</a>
         <a href="https://crm.phonaro.de/shop">Shop</a>
-        <a href="https://www.linkedin.com/in/marvin-bahde-2029922b2/" target="_blank" rel="noopener noreferrer" font-weight: bold;">LinkedIn ↗</a>
+        <a href="https://www.linkedin.com/in/marvin-bahde-2029922b2/" target="_blank" rel="noopener noreferrer" style="font-weight: bold;">LinkedIn ↗</a>
     </nav>
 
  <div class="vollbild-div">
@@ -430,6 +431,23 @@
     <script defer="defer" type="text/javascript" src="https://crm.phonaro.de/im_livechat/assets_embed.js"></script>
 
 </footer>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Wenn der Bildschirm kleiner als 900px ist (Smartphone-Ansicht)
+        if (window.innerWidth <= 900) {
+            const navLinks = document.querySelectorAll("nav a");
+            navLinks.forEach(link => {
+                const href = link.getAttribute("href");
+                // Wenn es ein Anker ist (beginnt mit #), wird er für das Handy zur echten Seite umgeschrieben
+                if (href && href.startsWith("#")) {
+                    const pageName = href.substring(1); // z.B. "vorstellung"
+                    link.setAttribute("href", pageName + ".html");
+                }
+            });
+        }
+    });
+</script>
 
 </body>
 
