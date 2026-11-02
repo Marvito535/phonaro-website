@@ -63,15 +63,63 @@ header.hidden {
     pointer-events: none;
 }
 
+.header-auth-buttons {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 12px;
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+    z-index: 10;
+}
+
+.win98-btn {
+    background-color: #c0c0c0;
+    color: #000000;
+    font-family: 'MS Sans Serif', Arial, sans-serif;
+    font-size: 0.80rem;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 4px 10px;
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #808080;
+    border-bottom: 2px solid #808080;
+    box-shadow: 1px 1px 0px #000000;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    width: 130px;
+    box-sizing: border-box;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.win98-btn:hover {
+    background-color: #d4d0c8;
+}
+
+.win98-btn:active {
+    border-top: 2px solid #808080;
+    border-left: 2px solid #808080;
+    border-right: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
+    box-shadow: none;
+    padding: 5px 9px 3px 11px;
+}
+
 .contact-info {
     position: absolute;
     left: 50px;
 }
 
 header h1 {
-    margin: 0;
-    font-size: 2.5rem;
+    margin: 0 0 25px 0;
 }
+
+
 html {
     scroll-behavior: smooth;
     /* Verhindert, dass fixe Elemente den Anker verdecken / sorgt für einheitliches Offset */
