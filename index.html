@@ -433,18 +433,31 @@
 </footer>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Wenn der Bildschirm kleiner als 900px ist (Smartphone-Ansicht)
-        if (window.innerWidth <= 900) {
-            const navLinks = document.querySelectorAll("nav a");
-            navLinks.forEach(link => {
-                const href = link.getAttribute("href");
-                // Wenn es ein Anker ist (beginnt mit #), wird er für das Handy zur echten Seite umgeschrieben
-                if (href && href.startsWith("#")) {
-                    const pageName = href.substring(1); // z.B. "vorstellung"
-                    link.setAttribute("href", pageName + ".html");
+    document.addEventListener("click", function(event) {
+        // Prüfen, ob ein Link in der Navigation geklickt wurde
+        const link = event.target.closest("nav a");
+        if (!link) return;
+
+        const href = link.getAttribute("href");
+
+        // Wenn es ein Anker ist (beginnt mit #)
+        if (href && href.startsWith("#")) {
+            // Wenn der Bildschirm kleiner oder gleich 900px ist (Smartphone/Tablet)
+            if (window.innerWidth <= 900) {
+                event.preventDefault(); // Verhindere das normale Runterschrollen
+                const pageName = href.substring(1); // z.B. "vorstellung"
+                
+                // Mappe den Anker auf deine .html-Datei
+                // (Falls dein Onboarding-Anker #kontoanker auf onboarding.html zeigen soll:)
+                let targetPage = pageName + ".html";
+                if (pageName === "kontoanker") {
+                    targetPage = "onboarding.html"; 
                 }
-            });
+
+                window.location.href = targetPage; // Lade die echte Seite
+            }
+            // Auf dem Desktop (> 900px) macht das Skript gar nichts, 
+            // sodass der Browser ganz normal zum Anker scrollt!
         }
     });
 </script>
