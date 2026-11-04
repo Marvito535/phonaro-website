@@ -492,24 +492,8 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
-<script>
-/*############### 
-HEADER ANIMATION
-############### */
-window.addEventListener('scroll', function() {
-  const header = document.querySelector('header');
-  const nav = document.querySelector('nav');
-  
-  if (window.scrollY > 0) {
-    // Wenn gescrollt wird: Beide ausblenden
-    header.classList.add('hidden');
-    nav.classList.add('hidden');
-  } else {
-    // Wenn ganz oben: Beide wieder anzeigen
-    header.classList.remove('hidden');
-    nav.classList.remove('hidden');
-  }
-});</script>
+
+
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -569,6 +553,10 @@ window.addEventListener('scroll', function() {
             }
         });
     });
+
+/*############### 
+HEADER ANIMATION
+############### */
 
     // 4. Scroll-Logik AUSSCHLIESSLICH für den Desktop (> 900px)
     window.addEventListener('scroll', function() {
