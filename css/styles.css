@@ -2,15 +2,32 @@
    Allgemeine Styles
    ========================================== */
 
+/* Der Body dient als Träger für den durchgehenden Hintergrund */
 body {
     font-family: 'JetBrains Mono', monospace;
     line-height: 1.7;
-    height: 100%;
     margin: 0;
     padding: 0;
-    background-color: #FFFFFF;
+    background-color: #ffffff; /* Ein sehr dunkles Grün als Fallback, falls das Bild lädt */
     display: flex;
     flex-direction: column;
+    position: relative;
+}
+
+/* Das Hintergrundbild liegt jetzt als fester, durchgehender Schleier über der ganzen Seite hinter allem */
+body::before {
+    content: "";
+    position: fixed; /* Fixiert, damit es beim Scrollen stilvoll im Hintergrund stehen bleibt (Parallax-Effekt) */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    background-image: url('../images/Held.jpg');
+    background-size: cover;
+    background-position: center center;
+    filter: grayscale(100%);
+    opacity: 0.25; /* Etwas dezenter, damit man alle Texte und Boxen perfekt lesen kann */
 }
 
 .top-bar {
@@ -119,7 +136,6 @@ header h1 {
     margin: 0 0 25px 0;
 }
 
-
 html {
     scroll-behavior: smooth;
     /* Verhindert, dass fixe Elemente den Anker verdecken / sorgt für einheitliches Offset */
@@ -133,7 +149,6 @@ html {
     transform: translateY(-50%);
     height: 115px;
 }
-
 
 /* ==========================================
    Navigation
@@ -177,30 +192,22 @@ nav a:hover {
 /* ==========================================
    Hero-Bereich (Vollbild-Div)
    ========================================== */
+/* Der Bereich heißt jetzt nur noch Slogan-Bereich, da der Hintergrund nach unten wandert */
 .vollbild-div {
     position: relative;
     width: 100%; 
-    height: 100vh; 
-    padding: 5px 60px 60px 60px; /* Oben von 60px auf 5px reduziert */
+    height: auto; 
+    padding: 40px 20px;
     display: flex; 
     flex-direction: column; 
-    justify-content: flex-start; /* Setzt den Inhalt nach oben */
-    align-items: center;         /* Zentriert den Inhalt horizontal in der Mitte */
-    margin-bottom: 50px;
+    align-items: center;
+    margin-bottom: 30px;
     box-sizing: border-box;
 }
 
+/* Den alten ::before-Filter von .vollbild-div löschen, da der Hintergrund jetzt global im body::before liegt */
 .vollbild-div::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    z-index: -1;
-    background-image: url('../images/Held.jpg'); 
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    filter: grayscale(100%);
-    opacity: 0.5;
+    display: none; 
 }
 
 .farbiger-text {
@@ -239,7 +246,11 @@ nav a:hover {
 .video-wrapper iframe {
     width: 100%;
     max-width: 100%;
-    border: 20px solid #005e3f;
+    border-top: 3px solid #ffffff;
+    border-left: 3px solid #ffffff;
+    border-right: 3px solid #003624;
+    border-bottom: 3px solid #003624;
+    box-shadow: 2px 2px 0px #000000;
     box-sizing: border-box;
     filter: grayscale(0%);
 }
@@ -250,10 +261,16 @@ nav a:hover {
     padding: 15px;
     max-height: 500px;
     overflow-y: scroll;
+    
+    /* Der neue Win98-Container-Stil */
     background-color: #777777;
-    border: 8px solid #005e3f;
-    border-radius: 15px;
-    box-shadow: 0 10px 15px #87AFC7;
+    border-top: 3px solid #ffffff;
+    border-left: 3px solid #ffffff;
+    border-right: 3px solid #404040;
+    border-bottom: 3px solid #404040;
+    box-shadow: 2px 2px 0px #000000;
+    border-radius: 0px; /* Kantig im Retro-Look */
+    
     font-family: 'JetBrains Mono', monospace;
     line-height: 1.7;
     scrollbar-width: auto; 
@@ -263,14 +280,14 @@ nav a:hover {
 
 .comment {
     margin-bottom: 15px;
-    border-bottom: 1px solid #005e3f;
+    border-bottom: 1px solid #555555; /* Dezentere Trennung zwischen den Kommentaren */
     padding-bottom: 10px;
 }
 
 .comment-user {
     font-weight: bold;
     font-size: 0.9em;
-    color: #EAEAEA;
+    color: #ffffff; /* Noch etwas kontrastreicher für die Namen */
 }
 
 /* Retro Scrollbalken */
@@ -319,9 +336,12 @@ table {
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 20px;
-    border: 8px solid #005e3f;
-    border-radius: 15px;
-    box-shadow: 0 10px 15px #87AFC7;
+    border-top: 3px solid #ffffff;
+    border-left: 3px solid #ffffff;
+    border-right: 3px solid #404040;
+    border-bottom: 3px solid #404040;
+    box-shadow: 2px 2px 0px #000000;
+    border-radius: 0px;
     border-spacing: 0;
     font-family: 'JetBrains Mono', monospace;
     line-height: 1.7;
@@ -338,7 +358,7 @@ th {
 }
 
 /* ==========================================
-   Formulare & Onboarding (Unberührt gelassen)
+   Formulare & Onboarding im Win98-Retro-Style
    ========================================== */
 .freeTrialSection {
     max-width: 800px;
@@ -346,10 +366,17 @@ th {
     padding: 40px 30px;
     font-family: 'JetBrains Mono', monospace;
     line-height: 1.7;
-    background-color: #ffffff;
-    border: 2px solid #e0e6e4;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    
+    /* Angenehmes Win98-Grau statt grellem Weiß */
+    background-color: #c0c0c0;
+    
+    /* Klassischer 3D-Retro-Rahmen */
+    border-top: 3px solid #ffffff;
+    border-left: 3px solid #ffffff;
+    border-right: 3px solid #808080;
+    border-bottom: 3px solid #808080;
+    box-shadow: 2px 2px 0px #000000;
+    border-radius: 0px;
     box-sizing: border-box;
 }
 
@@ -360,31 +387,38 @@ th {
 
 .freeTrialHeader h2 {
     color: #005e3f;
-    font-size: 2rem;
+    font-size: 1.8rem;
     margin-bottom: 15px;
+    font-family: 'MS Sans Serif', Arial, sans-serif;
 }
 
 .freeTrialHeader p {
-    color: #005e3f;
-    font-size: 1.1rem;
+    color: #222222;
+    font-size: 1rem;
     line-height: 1.7;
     max-width: 650px;
     margin: 0 auto;
 }
 
 fieldset {
-    border: 1px solid #c8d4d0;
-    border-radius: 8px;
+    /* Eingelassener Win98-Look für die Fieldsets */
+    border-top: 2px solid #808080;
+    border-left: 2px solid #808080;
+    border-right: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
+    border-radius: 0px;
     padding: 25px;
     margin-bottom: 30px;
-    background-color: #fafbfc;
+    background-color: #d4d0c8; /* Noch ein Hauch dezenterer Hintergrund für die Boxen */
 }
 
 legend {
     font-weight: bold;
     color: #005e3f;
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     padding: 0 10px;
+    background-color: #c0c0c0;
+    border: 1px solid #808080;
 }
 
 input[type="text"],
@@ -397,57 +431,91 @@ textarea {
     box-sizing: border-box;
     margin-top: 5px;
     margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    
+    /* Eingedrückte Textfelder im Retro-Stil */
+    border-top: 2px solid #808080;
+    border-left: 2px solid #808080;
+    border-right: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
+    border-radius: 0px;
+    background-color: #ffffff;
     font-family: 'JetBrains Mono', monospace;
 }
 
 /* ==========================================
-   Termin-Sektion (#termin)
+   Termin-Sektion (#termin) im Windows-98-Style
    ========================================== */
 #termin {
     max-width: 800px;
     margin: 60px auto;
     padding: 40px 20px;
-    background-color: #f7f9f8;
-    border: 1px solid #e0e6e4;
-    border-radius: 12px;
+    background-color: #c0c0c0; /* Klassisches Win98-Grau */
+    
+    /* Der typische Win98-3D-Rahmen: Oben/Links hell, Unten/Rechts dunkel */
+    border-top: 3px solid #ffffff;
+    border-left: 3px solid #ffffff;
+    border-right: 3px solid #808080;
+    border-bottom: 3px solid #808080;
+    box-shadow: 2px 2px 0px #000000; /* Harter Pixel-Schatten */
+    
+    border-radius: 0px; /* Win98 hat keine runden Ecken! */
     text-align: center;
     box-sizing: border-box;
 }
 
 #termin h2 {
-    color: #005e3f;
-    font-size: 2rem;
+    color: #005e3f; /* Klassischer dunkler Fenstertitel-Look */
+    font-size: 1.8rem;
     margin-top: 10px;
     margin-bottom: 15px;
+    font-family: 'MS Sans Serif', Arial, sans-serif;
 }
 
 #termin p {
-    color: #555;
+    color: #000000;
     max-width: 550px;
     margin: 0 auto 25px auto;
-    line-height: 1.7;
-    font-size: 1.05rem;
+    line-height: 1.5;
+    font-size: 1rem;
 }
 
+/* Der Button im echten Win98-Look */
 #termin a {
     display: inline-block;
-    background-color: #2e4d44;
-    color: #ffffff !important;
-    padding: 14px 35px;
-    border-radius: 6px;
+    background-color: #c0c0c0;
+    color: #000000 !important;
+    padding: 10px 25px;
+    
+    /* Win98 Button-Kanten */
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #808080;
+    border-bottom: 2px solid #808080;
+    box-shadow: 1px 1px 0px #000000;
+    
+    border-radius: 0px;
     text-decoration: none;
     font-weight: bold;
-    font-size: 1.1rem;
-    box-shadow: 0 4px 12px rgba(46, 77, 68, 0.2);
-    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+    font-size: 1rem;
+    font-family: 'MS Sans Serif', Arial, sans-serif;
+    transition: none; /* Kein weiches Fade, Win98 klickt hart ein */
 }
 
 #termin a:hover {
-    background-color: #1a332c;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(26, 51, 44, 0.3);
+    background-color: #d4d0c8;
+    transform: none;
+    box-shadow: 1px 1px 0px #000000;
+}
+
+#termin a:active {
+    /* Eingedrückter Zustand beim Klick */
+    border-top: 2px solid #808080;
+    border-left: 2px solid #808080;
+    border-right: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
+    box-shadow: none;
+    transform: none;
+    padding: 11px 24px 9px 26px; /* Verschiebt den Text leicht nach unten rechts beim Klick */
 }
 
 /* ==========================================
@@ -458,7 +526,10 @@ textarea {
     color: #EAEAEA;
     font-size: 2rem;
     width: 80%;
-    border: 1.5px solid #005e3f;
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #003624;
+    border-bottom: 2px solid #003624;
     background-color: #005e3f;
     margin: 0 auto;
     text-align: center;
@@ -466,7 +537,10 @@ textarea {
 }
 
 details {
-    border: 1.5px solid #005e3f;
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #003624;
+    border-bottom: 2px solid #003624;
     overflow: hidden;
     transition: all 0.3s ease;
     width: 80%;
@@ -539,23 +613,44 @@ footer {
     left: 20px;
     right: 20px;
     max-width: 500px;
-    background: #ffffff;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-    border-radius: 8px;
+    background: #c0c0c0;
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #808080;
+    border-bottom: 2px solid #808080;
+    box-shadow: 2px 2px 0px #000000;
     padding: 20px;
     z-index: 9999;
-    font-family: sans-serif;
+    font-family: 'MS Sans Serif', Arial, sans-serif;
     line-height: 1.7;
-    color: #333;
+    color: #000000;
 }
 .cookie-content h3 { margin-top: 0; font-size: 18px; }
-.cookie-content p { font-size: 14px; line-height: 1.7; color: #666; }
+.cookie-content p { font-size: 14px; line-height: 1.7; color: #000000; }
 .cookie-options { margin: 15px 0; display: flex; flex-direction: column; gap: 8px; }
 .cookie-options label { font-size: 14px; cursor: pointer; }
 .cookie-buttons { display: flex; gap: 10px; margin-top: 15px; }
-.btn { padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 14px; font-family: 'JetBrains Mono', monospace; }
-.btn-primary { background: #0070ba; color: white; }
-.btn-secondary { background: #e3e8ee; color: #4f5b66; }
+.btn { 
+    padding: 6px 12px; 
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-right: 2px solid #808080;
+    border-bottom: 2px solid #808080;
+    box-shadow: 1px 1px 0px #000000;
+    cursor: pointer; 
+    font-weight: bold; 
+    font-size: 14px; 
+    font-family: 'MS Sans Serif', Arial, sans-serif; 
+}
+.btn:active {
+    border-top: 2px solid #808080;
+    border-left: 2px solid #808080;
+    border-right: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
+    box-shadow: none;
+}
+.btn-primary { background: #c0c0c0; color: #000000; }
+.btn-secondary { background: #d4d0c8; color: #000000; }
 
 /* ==========================================
    WhatsApp Floating Button
@@ -606,7 +701,6 @@ footer {
     .whatsapp-float {
         display: none !important; /* Wird jetzt sauber nur auf dem Handy ausgeblendet */
     }
-
 
     /* Erzwingt, dass der Header auf Handys NIEMALS verschwindet */
     header,
@@ -662,15 +756,20 @@ footer {
         display: none; 
     }
 
-
     .vollbild-div {
-        height: auto;
-        padding: 40px 20px;
+        height: auto !important;
+        min-height: auto;
+        padding: 20px 15px 30px 15px !important;
+        background-color: #f7f9f8;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
+
     .farbiger-text {
-        font-size: 1.5rem;
-        margin-bottom: 30px;
+        font-size: 1.3rem !important;
+        margin-bottom: 0 !important;
     }
 
     .video-layout-container {
@@ -759,7 +858,7 @@ footer {
         box-sizing: border-box;
     }
 
-  /* Standardmäßig eingeklappt */
+    /* Standardmäßig eingeklappt */
     nav {
         display: none !important; /* Verhindert das Aufblitzen beim Schließen komplett */
         flex-direction: column;
