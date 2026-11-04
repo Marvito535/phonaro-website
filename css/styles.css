@@ -587,6 +587,8 @@ footer {
     pointer-events: none !important; 
 }
 
+.menu-toggle { display: none; }
+
 @keyframes shake {
     0% { transform: translate(1px, 1px) rotate(0deg); }
     20% { transform: translate(-1px, -2px) rotate(-1deg); }
@@ -600,9 +602,6 @@ footer {
    MOBILE OPTIMIERUNG (Greift nur auf Smartphones / Bildern < 900px)
    ========================================================================== */
 @media (max-width: 900px) {
-    html {
-        scroll-padding-top: 0px; /* Kleinerer Abstand für das Handy */
-    }
 
     .whatsapp-float {
         display: none !important; /* Wird jetzt sauber nur auf dem Handy ausgeblendet */
@@ -663,16 +662,6 @@ footer {
         display: none; 
     }
 
-    nav {
-        flex-direction: column;
-        max-height: none;
-    }
-
-    nav a {
-        width: 100%;
-        box-sizing: border-box;
-        padding: 10px;
-    }
 
     .vollbild-div {
         height: auto;
@@ -754,6 +743,43 @@ footer {
         flex-direction: column;
         text-align: center;
         gap: 30px;
+    }
+
+    /* Burger-Menü Button (wird nur auf dem Handy angezeigt) */
+    .menu-toggle {
+        display: block !important;
+        background-color: #005e3f;
+        color: #EAEAEA;
+        padding: 12px;
+        text-align: center;
+        font-weight: bold;
+        font-size: 1.1rem;
+        cursor: pointer;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Standardmäßig ist die Navigation auf dem Handy eingeklappt */
+    nav {
+        flex-direction: column;
+        max-height: none;
+        display: none !important;
+    }
+
+    /* Wenn die Klasse 'active' gesetzt wird, klappt das Menü auf */
+    nav.active {
+        display: flex !important;
+    }
+
+    nav a {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px;
+    }
+
+    /* Blendet den Menüpunkt "Vorstellung" auf dem Handy aus */
+    nav a[href="#vorstellung"] {
+        display: none !important;
     }
 
 } /* <--- Das ist die einzig richtige, schließende Klammer für die Media-Query am Ende! */
