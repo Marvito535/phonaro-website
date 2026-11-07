@@ -23,7 +23,7 @@ body::before {
     width: 100%;
     height: 100vh;
     z-index: -1;
-    background-image: url('../images/Held.jpg');
+    background-image: url('../images/Held.webp');
     background-size: cover;
     background-position: center center;
     filter: grayscale(100%);
