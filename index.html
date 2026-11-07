@@ -450,8 +450,28 @@
 
     </div>
 
-    <script defer="defer" type="text/javascript" src="https://crm.phonaro.de/im_livechat/loader/1"></script>
-    <script defer="defer" type="text/javascript" src="https://crm.phonaro.de/im_livechat/assets_embed.js"></script>
+<script>
+(function () {
+  var geladen = false;
+  function ladeLivechat() {
+    if (geladen) return;
+    geladen = true;
+    [
+      'https://crm.phonaro.de/im_livechat/loader/1',
+      'https://crm.phonaro.de/im_livechat/assets_embed.js'
+    ].forEach(function (url) {
+      var s = document.createElement('script');
+      s.src = url;
+      s.async = false; /* Reihenfolge einhalten: erst loader, dann assets_embed */
+      document.body.appendChild(s);
+    });
+  }
+  ['scroll', 'mousemove', 'touchstart', 'keydown', 'click'].forEach(function (ereignis) {
+    window.addEventListener(ereignis, ladeLivechat, { once: true, passive: true });
+  });
+  window.addEventListener('load', function () { setTimeout(ladeLivechat, 8000); });
+})();
+</script>
 
 </footer>
 
