@@ -221,46 +221,94 @@ nav a:hover {
 /* ==========================================
    Video & Kommentare Layout
    ========================================== */
-.video-layout-container {
-    display: flex;
-    gap: 20px;
+/* Zwei Spalten: Video links, Kommentare rechts */
+  .video-kommentar-bereich {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 24px;
+    align-items: start;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
-    font-family: 'JetBrains Mono', monospace;
-    line-height: 1.7;
-    width: 80%;
-    box-sizing: border-box;
-}
+  }
 
-.video-box {
-    flex: 7;
-}
+  /* Auf Handy und kleinen Tablets untereinander */
+  @media (max-width: 800px) {
+    .video-kommentar-bereich { grid-template-columns: 1fr; }
+  }
 
-.video-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
-
-.video-wrapper iframe {
-    width: 100%;
+  /* Video-Vorschau */
+  .video-vorschau {
+    position: relative;
+    aspect-ratio: 16 / 9;
     max-width: 100%;
+
     border-top: 3px solid #ffffff;
     border-left: 3px solid #ffffff;
-    border-right: 3px solid #003624;
-    border-bottom: 3px solid #003624;
+    border-right: 3px solid #404040;
+    border-bottom: 3px solid #404040;
     box-shadow: 2px 2px 0px #000000;
-    box-sizing: border-box;
-    filter: grayscale(0%);
-}
+    border-radius: 0px; /* Kantig im Retro-Look */
+
+    overflow: hidden;
+    background-color: #111;
+
+      }
+
+   .video-vorschau img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+   }
+
+  .video-vorschau button {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    cursor: pointer;
+    background: linear-gradient(to top, rgba(0,0,0,.65), rgba(0,0,0,.15));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    color: #fff;
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .play-kreis {
+    position: relative;
+    display: block;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: #e62117;
+    box-shadow: 0 4px 16px rgba(0,0,0,.4);
+    transition: transform .2s;
+  }
+  .play-kreis::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-35%, -50%);
+    border-style: solid;
+    border-width: 14px 0 14px 24px;
+    border-color: transparent transparent transparent #fff;
+  }
+  .video-vorschau button:hover .play-kreis { transform: scale(1.1); }
 
 .comments-box {
     color: #EAEAEA;
     flex: 3;
     padding: 15px;
-    max-height: 500px;
-    overflow-y: scroll;
+    padding-right: 8px;
+    max-height: 385px;
+    overflow-y: auto;
     
     /* Der neue Win98-Container-Stil */
     background-color: #777777;
@@ -279,13 +327,13 @@ nav a:hover {
 }
 
 .comment {
-    margin-bottom: 15px;
+    margin-bottom: 16px;
     border-bottom: 1px solid #555555; /* Dezentere Trennung zwischen den Kommentaren */
     padding-bottom: 10px;
 }
 
 .comment-user {
-    font-weight: bold;
+    font-weight: 600; margin-bottom: 4px;;
     font-size: 0.9em;
     color: #ffffff; /* Noch etwas kontrastreicher für die Namen */
 }

@@ -9,7 +9,7 @@
 
      <!-- HIER DIE NEUE META-DESCRIPTION EINFÜGEN -->
     <meta name="description" content="B2B Kaltakquise & Leadgenerierung ohne Knebelverträge. Nutzen Sie unser transparentes Prepaid-Credit-Modell. Jetzt 20 Start-Credits gratis sichern! ➔">
-    
+
     <link rel="stylesheet" href="css/styles.css"> <!-- Verlinkt die CSS-Datei -->
     <!-- Cal element-click embed code begins -->
     <script type="text/javascript">
@@ -79,7 +79,6 @@
     <button class="menu-toggle" id="menuToggleBtn">☰</button>
 
     <nav id="mainNav">
-        <a href="#vorstellung">Vorstellung</a>
         <a href="#preise">Preise</a>
         <a href="#kontoanker">Onboarding</a>
         <a href="#termin">Termin vereinbaren</a>
@@ -89,46 +88,51 @@
         <a href="https://www.linkedin.com/in/marvin-bahde-2029922b2/" target="_blank" rel="noopener noreferrer" style="font-weight: bold;">LinkedIn ↗</a>
     </nav>
 
- <div class="vollbild-div">
+        <div class="vollbild-div">
         <h1 class="farbiger-text">B2B Kaltakquise professionell auslagern – Ihre Leadgenerierungs-Agentur auf Prepaid-Basis</h1>
-      </div>
-    <section id="vorstellung"> </section>
-<div class="video-layout-container">
-    
-    <!-- Linker Bereich: Das YouTube-Video -->
-    <div class="video-box">
-        <div class="video-wrapper">
-            <!-- Ersetze 'VIDEO_ID' in der URL mit der tatsächlichen ID deines YouTube-Videos -->
-<iframe width="560" height="500" src="https://www.youtube.com/embed/P-_59AYzS8I?si=TNTrs3dKP1o0ukux" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"></iframe>       
- </div>
+      </div>    
+   
+
+<div class="video-kommentar-bereich">
+
+  <!-- Linker Bereich: Video -->
+  <div class="video-spalte">
+    <div id="yt-box" class="video-vorschau">
+        <img src="/images/Eule.jpeg" alt="Vorschaubild: Phonaro Erklärvideo" width="1000" height="563" loading="lazy" decoding="async">
+        <button type="button" aria-label="Erklärvideo abspielen">
+        <span class="play-kreis"></span>
+        <span class="play-text">Erklärvideo ansehen</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Rechter Bereich: Die Kommentare -->
+  <div class="comments-box">
+    <h3>Kommentare</h3>
+
+    <div class="comment">
+      <div class="comment-user">Internationaler Auftraggeber ⭐⭐⭐⭐⭐</div>
+      <p>"Working with Marvin has been an excellent experience. He demonstrated professionalism, strong communication skills, and a genuine commitment to delivering high-quality work. He consistently met deadlines, was proactive in providing updates, and responded quickly to any questions or requests. His attention to detail and ability to understand the project requirements ensured that the final deliverables exceeded expectations. I truly appreciate his reliability and collaborative approach, and I would gladly work with him again on future projects. Highly recommended!"</p>
     </div>
 
-    <!-- Rechter Bereich: Die Kommentare -->
-    <div class="comments-box">
-        <h3>Kommentare</h3>
-        
-        <div class="comment">
-            <div class="comment-user">Internationaler Auftraggeber ⭐⭐⭐⭐⭐</div>
-            <p>"Working with Marvin has been an excellent experience. He demonstrated professionalism, strong communication skills, and a genuine commitment to delivering high-quality work. He consistently met deadlines, was proactive in providing updates, and responded quickly to any questions or requests. His attention to detail and ability to understand the project requirements ensured that the final deliverables exceeded expectations. I truly appreciate his reliability and collaborative approach, and I would gladly work with him again on future projects. Highly recommended!"</p>
-        </div>
-
-        <div class="comment">
-            <div class="comment-user">Auftraggeber aus Saudi-Arabien zu Conversation Recording Task ⭐⭐⭐⭐⭐</div>
-            <p>"Job well done. Good communication and understanding. Highly recommend!"".</p>
-        </div>
-
-        <div class="comment">
-            <div class="comment-user">Anrufe Österreich für Muster / Auftraggeber aus Bad Homburg </div>
-            <p>57 Stunden Zusammenarbeit</p>
-        </div>
-
-        <div class="comment">
-            <div class="comment-user">Customer Lead Generation & Support. Optimally in German / Auftraggeber aus Bad Homburg</div>
-            <p>341 Stunden Zusammenarbeit</p>
-        </div>
+    <div class="comment">
+      <div class="comment-user">Auftraggeber aus Saudi-Arabien zu Conversation Recording Task ⭐⭐⭐⭐⭐</div>
+      <p>"Job well done. Good communication and understanding. Highly recommend!"</p>
     </div>
+
+    <div class="comment">
+      <div class="comment-user">Anrufe Österreich für Muster / Auftraggeber aus Bad Homburg</div>
+      <p>57 Stunden Zusammenarbeit</p>
+    </div>
+
+    <div class="comment">
+      <div class="comment-user">Customer Lead Generation & Support. Optimally in German / Auftraggeber aus Bad Homburg</div>
+      <p>341 Stunden Zusammenarbeit</p>
+    </div>
+  </div>
 
 </div>
+
 
 <!-- Verifizierungs-Link direkt unter den Kundenstimmen -->
 <div style="text-align: center; margin-top: 25px; margin-bottom: 40px; font-family: sans-serif;">
@@ -142,7 +146,14 @@
     </p>
 </div>
 
-
+<script>
+  document.querySelector('#yt-box button').addEventListener('click', function () {
+    document.getElementById('yt-box').innerHTML =
+      '<iframe src="https://www.youtube-nocookie.com/embed/P-_59AYzS8I?autoplay=1" ' +
+      'style="width:100%;height:100%;border:0" title="Phonaro Erklärvideo" ' +
+      'allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
+  });
+</script>
 
 
 
