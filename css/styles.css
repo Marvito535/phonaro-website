@@ -1187,3 +1187,23 @@ footer {
     box-shadow: 2px 2px 0px #000000;
 }
  
+/* Standard für Mobilgeräte: Untereinander */
+.projektFenster-raster {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Ab Tablet/Desktop (ab 768px Breite): Nebeneinander oder als Scrollleiste */
+@media (min-width: 768px) {
+    .projektFenster-raster {
+        flex-direction: row;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+    }
+    
+    .projektFenster {
+        flex: 0 0 300px;
+        scroll-snap-align: start;
+    }
+}
