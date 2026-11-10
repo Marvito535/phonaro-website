@@ -172,79 +172,67 @@
     
    <!-- Die neue Phonaro-Preistabelle -->
 <div class="tableContainer">
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Prepaid-Paket</th>
-                <th>Inkludierte Leistungen & Umfang</th>
-                <th>Preis</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Zeile 1: Starter -->
-            <tr>
-                <td>
-                    Starter-Paket<br>
-                    <span>120 Credits</span>
-                </td>
-                <td>
-                    <ul>
-                        <li>120 dokumentierte Anrufversuche am Telefon</li>
-                        <li>Zielpersonen-Recherche auf LinkedIn inklusive</li>
-                        <li>Vollständiges Reporting der Ergebnisse per Excel/CRM-Export</li>
-                    </ul>
-                    <p>Ideal, um Ihren Markt oder ein neues Skript schnell anzutesten.</p>
-                </td>
-                <td>
-                    149 €<br>
-                    <span>zzgl. MwSt.</span>
-                </td>
-            </tr>
+    <div class="preisKarten">
 
-            <!-- Zeile 2: Business (Bestseller) -->
-            <tr class="bestsellerRow">
-                <td>
-                    Business-Kampagne<br>
-                    <strong>500 Credits</strong><br>
-                    <span class="badge">Bestseller</span>
-                </td>
-                <td>
-                    <ul>
-                       <li><strong>500 dokumentierte Anrufversuche</strong> am Telefon</li>
-                        <li>Strategische Zielgruppen-Recherche über LinkedIn Sales Navigator</li>
-                        <li>Professionelle Optimierung Ihres Telefonskripts vor dem Start</li>
-                        <li>In der Business-Kampagne sind alle Konditionen aus dem Starter-Paket enthalten.</li>
-                    </ul>
-                    <p><strong>Erwartetes Ergebnis: ca. 10 bis 25 heiße B2B-Termine für Ihren Vertrieb.</strong></p>
-                </td>
-                <td>
-                    499 €<br>
-                    <span>zzgl. MwSt.</span>
-                </td>
-            </tr>
+        <!-- Zeile 1: Starter -->
+        <details class="preisKarte">
+            <summary>
+                <span class="preisName">Starter-Paket</span>
+                <span class="preisCredits">120 Credits</span>
+                <span class="preisBetrag">149 €</span>
+                <span class="preisHinweis">zzgl. MwSt.</span>
+            </summary>
+            <div class="content preisInhalt">
+                <ul>
+                    <li>120 dokumentierte Anrufversuche am Telefon</li>
+                    <li>Zielpersonen-Recherche auf LinkedIn inklusive</li>
+                    <li>Vollständiges Reporting der Ergebnisse per Excel/CRM-Export</li>
+                </ul>
+                <p>Ideal, um Ihren Markt oder ein neues Skript schnell anzutesten.</p>
+            </div>
+        </details>
 
-            <!-- Zeile 3: Enterprise -->
-            <tr>
-                <td>
-                    Enterprise-Skalierung<br>
-                    <span>1.000 Credits</span>
-                </td>
-                <td>
-                    <ul>
-                       <li>1.000 dokumentierte Anrufversuche am Telefon</li>
-                        <li>Kontinuierliches Sourcing und unlimitierte Lead-Recherche</li>
-                        <li>Dedizierte Zeitzonen-Absprache für maximale Erreichbarkeit</li>
-                         <li>In der Enterprise-Skalierung sind alle Konditionen aus dem Business-Paket enthalten.</li>
-                    </ul>
-                </td>
-                <td>
-                    899 €<br>
-                    <span>zzgl. MwSt.</span>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+        <!-- Zeile 2: Business (Bestseller) -->
+        <details class="preisKarte" open>
+            <summary>
+                <span class="preisBadge">Bestseller</span>
+                <span class="preisName">Business-Kampagne</span>
+                <span class="preisCredits"><strong>500 Credits</strong></span>
+                <span class="preisBetrag">499 €</span>
+                <span class="preisHinweis">zzgl. MwSt.</span>
+            </summary>
+            <div class="content preisInhalt">
+                <ul>
+                    <li><strong>500 dokumentierte Anrufversuche</strong> am Telefon</li>
+                    <li>Strategische Zielgruppen-Recherche über LinkedIn Sales Navigator</li>
+                    <li>Professionelle Optimierung Ihres Telefonskripts vor dem Start</li>
+                    <li>In der Business-Kampagne sind alle Konditionen aus dem Starter-Paket enthalten.</li>
+                </ul>
+                <p><strong>Erwartetes Ergebnis: ca. 10 bis 25 heiße B2B-Termine für Ihren Vertrieb.</strong></p>
+            </div>
+        </details>
+
+        <!-- Zeile 3: Enterprise -->
+        <details class="preisKarte">
+            <summary>
+                <span class="preisName">Enterprise-Skalierung</span>
+                <span class="preisCredits">1.000 Credits</span>
+                <span class="preisBetrag">899 €</span>
+                <span class="preisHinweis">zzgl. MwSt.</span>
+            </summary>
+            <div class="content preisInhalt">
+                <ul>
+                    <li>1.000 dokumentierte Anrufversuche am Telefon</li>
+                    <li>Kontinuierliches Sourcing und unlimitierte Lead-Recherche</li>
+                    <li>Dedizierte Zeitzonen-Absprache für maximale Erreichbarkeit</li>
+                    <li>In der Enterprise-Skalierung sind alle Konditionen aus dem Business-Paket enthalten.</li>
+                </ul>
+            </div>
+        </details>
+
+    </div>
 </div>
+
 
 <p style="text-align: center; margin-bottom: 30px;"><a href="/kaltakquise-agentur-preise.html" style="color: #005e3f; font-weight: bold;">Kaltakquise Agentur Preise im Detail ansehen →</a></p>
 
@@ -330,7 +318,7 @@
     </p>
     
     <!-- Link-Button zu Cal.com -->
-<a data-cal-link="phonaro/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true","timezone":"Europe/Berlin"}' class="DEINE_BUTTON_KLASSE">Jetzt Wunschtermin wählen</a>
+<a data-cal-link="phonaro/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true","timezone":"Europe/Berlin"}'>Jetzt Wunschtermin wählen</a>
 
 </section>
 
@@ -392,13 +380,13 @@
      <details>
         <summary>Ist eine langfristige Zusammenarbeit denkbar?</summary>
         <div class="content">
-            <p> Ja, absolut. Mein Prepaid-System ist ideal für den unkomplizierten Start. Bei erfolgreicher Zusammenarbeit biete ich etablierten Partnern maßgeschneiderte, langfristige Monats-Kontingente mit festen Kapazitäten an.</b>
+            <p> Ja, absolut. Mein Prepaid-System ist ideal für den unkomplizierten Start. Bei erfolgreicher Zusammenarbeit biete ich etablierten Partnern maßgeschneiderte, langfristige Monats-Kontingente mit festen Kapazitäten an.</p>
         </div>    
     </details>
     <details>
         <summary>Wie wird die Umsatzsteuer abgerechnet?</summary>
         <div class="content">
-            <p> Da es sich um eine grenzüberschreitende Auslandsdienstleistung handelt, greift das <b>Reverse-Charge-Verfahren</b>. Ich stelle eine Netto-Rechnung aus. Die Umsatzsteuer wird vom Leistungsempfänger (also von Ihnen) in der eigenen deutschen Buchhaltung deklariert.</b>
+            <p> Da es sich um eine grenzüberschreitende Auslandsdienstleistung handelt, greift das <b>Reverse-Charge-Verfahren</b>. Ich stelle eine Netto-Rechnung aus. Die Umsatzsteuer wird vom Leistungsempfänger (also von Ihnen) in der eigenen deutschen Buchhaltung deklariert.</p>
         </div>    
     </details>
 </section>
@@ -452,7 +440,7 @@
 
         <!-- Urheberrecht & Datenschutz-Link -->
         <div class="footerBottom">
-        <p>&copy; 2026 Phonaro.de. Alle Rechte vorbehalten. | <a href="datenschutz.html" target="_blank" style="color: #0077b5;">Datenschutzerklärung</a> |  <a href="https://www.linkedin.com/in/marvin-bahde-2029922b2/" target="_blank" rel="noopener noreferrer" style="color: #0077b5;" text-decoration: underline; font-weight: bold; margin-left: 10px;">LinkedIn Profil</a></p>
+        <p>&copy; 2026 Phonaro.de. Alle Rechte vorbehalten. | <a href="datenschutz.html" target="_blank" style="color: #0077b5;">Datenschutzerklärung</a> |  <a href="https://www.linkedin.com/in/marvin-bahde-2029922b2/" target="_blank" rel="noopener noreferrer" style="color: #0077b5; text-decoration: underline; font-weight: bold; margin-left: 10px;">LinkedIn Profil</a></p>
         </div>
 
     </div>

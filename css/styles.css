@@ -950,3 +950,100 @@ footer {
     }
 
 } /* <--- Das ist die einzig richtige, schließende Klammer für die Media-Query am Ende! */
+
+
+
+/* ==========================================
+   Preis-Karten (ausklappbar, Win98-Retro-Stil)
+   Ans ENDE der styles.css anhängen, damit sie die
+   globalen details/summary-Regeln des FAQ überschreiben.
+   ========================================== */
+.preisKarten {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    align-items: start; /* jede Karte nur so hoch wie ihr Inhalt */
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto 20px auto;
+    box-sizing: border-box;
+}
+
+/* Klasse schlägt die globale details-Regel (80 % Breite, zentriert) */
+.preisKarte {
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    background-color: #777777;
+    border-top: 3px solid #ffffff;
+    border-left: 3px solid #ffffff;
+    border-right: 3px solid #404040;
+    border-bottom: 3px solid #404040;
+    box-shadow: 2px 2px 0px #000000;
+    border-radius: 0px;
+    transition: none; /* Win98 klickt hart */
+}
+
+.preisKarte summary {
+    position: relative;
+    flex-direction: column; /* Name, Credits, Preis untereinander */
+    justify-content: center;
+    gap: 6px;
+    padding: 30px 15px 20px 15px;
+    text-align: center;
+    background-color: #777777;
+    color: #EAEAEA;
+}
+
+.preisKarte summary::-webkit-details-marker { display: none; } /* Safari */
+.preisKarte summary::after { transition: none; }
+
+.preisName    { font-size: 1rem; font-weight: bold; overflow-wrap: anywhere; }
+.preisCredits { font-size: 0.95rem; }
+.preisBetrag  { font-size: 2rem; font-weight: bold; line-height: 1.2; }
+.preisHinweis { font-size: 0.8rem; }
+
+/* Bestseller-Label in der Ecke, damit alle Karten gleich hoch bleiben */
+.preisBadge {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    background-color: #EAEAEA;
+    color: #005e3f;
+    border: 1px solid #005e3f;
+    padding: 1px 8px;
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+/* Grün, wenn aufgeklappt oder per Tastatur fokussiert (gilt auch auf Touchgeräten) */
+.preisKarte[open] summary,
+.preisKarte summary:focus-visible {
+    background-color: #005e3f;
+    color: #EAEAEA;
+}
+
+.preisKarte summary:focus-visible {
+    outline: 2px dotted #ffffff; /* klassischer Win98-Fokusrahmen */
+    outline-offset: -6px;
+}
+
+/* Hover-Grün nur dort, wo es echtes Hover gibt (nicht auf dem Handy) */
+@media (hover: hover) {
+    .preisKarte:hover summary {
+        background-color: #005e3f;
+        color: #EAEAEA;
+    }
+}
+
+.preisInhalt { color: #000000; }
+.preisInhalt ul { margin: 0 0 12px 0; padding-left: 20px; }
+.preisInhalt p  { margin: 0; }
+
+/* Karten untereinander, wenn drei nebeneinander zu eng werden */
+@media (max-width: 1000px) {
+    .preisKarten {
+        grid-template-columns: 1fr;
+        width: 92%;
+    }
+}
